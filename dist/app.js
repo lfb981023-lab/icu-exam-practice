@@ -1,4 +1,4 @@
-import {answerKeys, canGrade, gradeQuestion, sanitizeHistory, filterQuestions, summary, shuffle} from './core.js?v=4';
+import {answerKeys, canGrade, gradeQuestion, sanitizeHistory, filterQuestions, summary, shuffle} from './core.js?v=5';
 const $ = s => document.querySelector(s);
 const KEY = 'icu.study.v1';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -185,7 +185,7 @@ function closeAbout(){const d=$('#about-dialog');if(typeof d.close==='function')
 $('#about-open').addEventListener('click',()=>{const d=$('#about-dialog');if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');});
 $('#about-close').addEventListener('click',closeAbout);$('#about-done').addEventListener('click',closeAbout);
 $('#about-dialog').addEventListener('click',e=>{if(e.target===$('#about-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeAbout();}});
-async function loadBank(file){const response=await fetch(file+'?v=4');if(!response.ok)throw Error(file+' 加载失败');const loaded=await response.json();if(!Array.isArray(loaded.questions)||!loaded.questions.length)throw Error(file+' 尚未准备好');return loaded;}
+async function loadBank(file){const response=await fetch(file+'?v=5');if(!response.ok)throw Error(file+' 加载失败');const loaded=await response.json();if(!Array.isArray(loaded.questions)||!loaded.questions.length)throw Error(file+' 尚未准备好');return loaded;}
 async function init(){
   try{
     const results=await Promise.allSettled([loadBank('questions.json'),loadBank('past-papers.json')]);
