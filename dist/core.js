@@ -3,18 +3,23 @@ export function grade(selected, answers) {
   const b = [...new Set(answers)].sort();
   return a.length === b.length && a.every((v, i) => v === b[i]);
 }
+export function answerKeys(question) {
+  return question?.referenceStatus === 'confirmed' ? question.referenceAnswers : question?.answers;
+}
 export function canGrade(question) {
-  if (!question || (question.answerStatus && question.answerStatus !== 'provided')) return false;
+  if (!question) return false;
+  if (question.referenceStatus && question.referenceStatus !== 'confirmed') return false;
+  if (!question.referenceStatus && question.answerStatus && question.answerStatus !== 'provided') return false;
   if (!['single', 'multiple'].includes(question.type)) return false;
   const keys = (question.options || []).map(option => option.key);
-  const answers = question.answers;
+  const answers = answerKeys(question);
   return keys.length >= 2 && new Set(keys).size === keys.length &&
     Array.isArray(answers) && answers.length > 0 && new Set(answers).size === answers.length &&
     answers.every(answer => keys.includes(answer)) &&
     (question.type !== 'single' || answers.length === 1);
 }
 export function gradeQuestion(selected, question) {
-  return canGrade(question) ? grade(selected, question.answers) : null;
+  return canGrade(question) ? grade(selected, answerKeys(question)) : null;
 }
 export function sanitizeHistory(raw, questions) {
   const result = {};
@@ -37,6 +42,7 @@ export function filterQuestions(questions, history, filters, view) {
     (filters.module === 'all' || q.module === filters.module) &&
     (filters.chapter === 'all' || q.chapter === Number(filters.chapter)) &&
     (filters.type === 'all' || q.type === filters.type) &&
+    (!filters.referenceOnly || !!q.referenceStatus) &&
     (!filters.unanswered || !history[q.id]) &&
     (view !== 'wrong' || (history[q.id] && history[q.id].correct === false))
   );

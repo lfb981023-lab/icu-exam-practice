@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {grade,canGrade,gradeQuestion,sanitizeHistory,filterQuestions,summary,shuffle} from '../dist/core.js';
+import {grade,answerKeys,canGrade,gradeQuestion,sanitizeHistory,filterQuestions,summary,shuffle} from '../dist/core.js';
 const questions=[{id:'a',type:'single',module:'resp',chapter:45,options:[{key:'A'},{key:'B'},{key:'C'}],answers:['B']},{id:'b',type:'multiple',module:'renal',chapter:54,options:[{key:'A'},{key:'B'},{key:'C'}],answers:['A','C']}];
 test('single and multiple grades require the exact complete answer set',()=>{
   assert.equal(grade(['B'],['B']),true);assert.equal(grade(['A'],['B']),false);
@@ -55,10 +55,30 @@ test('both shipped banks have distinct IDs and ambiguous imported answers stay u
   const past=JSON.parse(readFileSync(new URL('../dist/past-papers.json',import.meta.url),'utf8'));
   assert.equal(mock.questions.length,300);assert.equal(past.questions.length,622);assert.equal(past.notes.length,42);
   const all=[...mock.questions,...past.questions];assert.equal(new Set(all.map(q=>q.id)).size,922);
-  assert.equal(past.questions.filter(canGrade).length,563);
+  const references=past.questions.filter(q=>q.referenceStatus);
+  assert.equal(references.length,59);
+  assert.equal(past.questions.filter(canGrade).length,563+references.filter(q=>q.referenceStatus==='confirmed').length);
   for(const q of past.questions){
     assert.ok(q.source.raw);assert.equal(q.id,'past-doc-'+String(q.source.ordinal).padStart(4,'0'));
     assert.ok(!/\/{2,}/.test(q.stem+q.options.map(o=>o.text).join(' ')));
-    if(q.answerStatus!=='provided'){assert.deepEqual(q.answers,[]);assert.equal(gradeQuestion(['A'],q),null);}
+    if(q.answerStatus!=='provided'){
+      assert.deepEqual(q.answers,[]);
+      assert.ok(q.referenceAnswerText);assert.ok(q.referenceRationale);assert.ok(q.referenceSources.length);
+      assert.ok(q.referenceSources.every(s=>s.title&&(s.url||s.pdfPages)));
+      if(q.referenceStatus==='confirmed'){assert.equal(canGrade(q),true);assert.equal(gradeQuestion(q.referenceAnswers,q),true);}
+      else assert.equal(gradeQuestion(['A'],q),null);
+    }
   }
+});
+test('confirmed reference answers override disputed keys without overwriting the source',()=>{
+  const q={...questions[0],id:'ref',answerStatus:'review',answers:[],rawAnswers:['A'],referenceStatus:'confirmed',referenceAnswers:['C']};
+  assert.deepEqual(answerKeys(q),['C']);assert.equal(gradeQuestion(['C'],q),true);assert.equal(gradeQuestion(['A'],q),false);
+  assert.deepEqual(q.rawAnswers,['A']);assert.deepEqual(q.answers,[]);
+  const h=sanitizeHistory({ref:{selected:['C'],correct:false}},[q]);assert.equal(h.ref.correct,true);
+  for(const referenceStatus of ['ambiguous','incomplete','versioned']){
+    const conditional={...q,referenceStatus};assert.equal(gradeQuestion(['C'],conditional),null);
+  }
+  assert.equal(canGrade({...q,referenceAnswers:['Z']}),false);
+  const f={module:'all',chapter:'all',type:'all',referenceOnly:true};
+  assert.deepEqual(filterQuestions([...questions,q],{},f,'practice').map(x=>x.id),['ref']);
 });

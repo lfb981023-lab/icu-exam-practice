@@ -7,7 +7,7 @@
     "sourceTextSha256": "fd7b35f288a652f772ee8a603292024da2527d21c46b81af69087d95893dbe2b",
     "questionCount": 622,
     "noteCount": 42,
-    "notice": "本库由用户提供的《危急重症题.doc》导入。原文件未逐题注明考试年份；保留前后两段题目、重复编号及原答案标记。含2005版复苏参数和旧版内容。答案缺失、冲突或已发现疑点的题不计成绩。",
+    "notice": "用户提供的原题按原文件顺序保留；59道缺失或疑义题补充了参考答案、核对说明和依据。答案明确的题按参考答案判分，条件缺失、选项歧义或版本差异题提供条件性结论而不强行计分。未对其余原文件答案作完整医学准确性审核。",
     "originalSections": [
       {
         "title": "前段急救题",
@@ -19,7 +19,14 @@
         "count": 499,
         "numbering": "1–500，原文缺65"
       }
-    ]
+    ],
+    "referenceAnswerCount": 59,
+    "referenceStatusCounts": {
+      "confirmed": 29,
+      "ambiguous": 10,
+      "versioned": 8,
+      "incomplete": 12
+    }
   },
   "modules": [
     {
@@ -689,8 +696,25 @@
         "lineEnd": 22,
         "raw": "11. 成人心肺复苏时打开气道的最常用方式为：A\nA 仰头举颏法；B 双手推举下颌法；D 托颏法；D 环状软骨压迫法"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "A"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "A：仰头举颏法。",
+      "referenceRationale": "无疑似颈椎损伤的成人，常用仰头举颏法开放气道；疑似颈椎损伤应避免随意后仰，优先由受训人员采用托下颌等方法。原文件把第三项误标为D，不影响A的内容和定位。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第28章：徒手开放气道",
+          "pdfPages": [
+            4
+          ]
+        }
+      ]
     },
     {
       "stem": "心室颤动/无脉性室性心动过速治疗时，推荐电击次数为：",
@@ -794,8 +818,24 @@
         "lineEnd": 26,
         "raw": "13.被目击的非创伤心跳骤停患者中最-常见的心律为：C\nA 心脏停搏；B 无脉性室颤；C 室颤；D 电-机械分离"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "原题预期为 C：室颤；但 B“无脉性室颤”与 C 实际指向同一种心律，原样不能作唯一单选。",
+      "referenceRationale": "心室颤动时无有效心排血量；“无脉性室速”和“室颤”是不同概念，原B可能有笔误，但不能擅自替换。应记住室颤属于可电击心律。“最常见”还受心搏骤停发生场所、病因与心律记录时点影响。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第28章：心搏骤停心电图表现",
+          "pdfPages": [
+            2,
+            3
+          ]
+        }
+      ]
     },
     {
       "stem": "对被目击的短暂室颤患者的最佳处理措施为：",
@@ -1840,8 +1880,21 @@
         "lineEnd": 72,
         "raw": "33、关于河豚鱼中毒，哪项不是其治疗方法： （D ）\nA. 催吐、洗胃、导泻； B. 1%盐酸士的宁肌注或皮下注射；\nC. 呼吸麻痹时可实施机械通气； D. 碳酸氢钠静滴。"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "原文件拟选 D，但按现行处理，本题没有可靠的唯一错误项；应记住呼吸支持和机械通气是重症河豚毒素中毒救治的关键。",
+      "referenceRationale": "河豚毒素无特异性解毒剂。CDC明确不应诱导呕吐，仅在严格条件下考虑洗胃，所以A不能作为常规组合治疗；B所述士的宁不是现代标准治疗。碳酸氢钠也不是河豚毒素的特异解毒药，是否用于酸碱紊乱取决于具体情况。不能把旧答案D理解成其余三项均安全适用。",
+      "referenceSources": [
+        {
+          "title": "CDC/NIOSH · Tetrodotoxin: Biotoxin",
+          "url": "https://www.cdc.gov/niosh/ershdb/emergencyresponsecard_29750019.html"
+        }
+      ]
     },
     {
       "stem": "女性，23岁，食用鱼片干及啤酒后出现恶心、呕吐，数小时后诉唇麻、四肢无力，不久呼吸困难，昏迷。最可能的诊断是： （ ）",
@@ -2815,8 +2868,25 @@
         "lineEnd": 113,
         "raw": "51、以下哪个原因不会引起气道不通畅：(A)？？？？？\nA喉或气管的软骨骨折；B休克；C颅脑损伤"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "B"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "B：休克（按本题“直接引起气道不通畅”的常规考点）。",
+      "referenceRationale": "喉或气管软骨骨折可造成移位、黏膜肿胀而堵塞气道；颅脑损伤可因意识丧失、舌后坠、误吸造成气道阻塞。休克本身是循环灌注障碍，在这三个选项中不是直接的气道机械性阻塞原因。不过严重休克致昏迷时仍必须评估和保护气道，不能把“不会”理解为绝对不会继发阻塞。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第28章：气道阻塞病因",
+          "pdfPages": [
+            3
+          ]
+        }
+      ]
     },
     {
       "stem": "急救人员到达创伤现场后，首要的任务是：（ ）",
@@ -3841,8 +3911,23 @@
         "lineEnd": 161,
         "raw": "71、大量血胸的症状和体征主要表现为 。（A）\nA 胸痛和昏迷 B低血容量和胸痛\nC呼吸损害和昏迷 D低血容量和呼吸损害 "
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D：低血容量和呼吸损害。",
+      "referenceRationale": "胸膜腔大量积血一方面造成失血与低血容量性休克，另一方面压迫肺并影响通气；胸痛可以存在，昏迷通常不是概括大量血胸主要表现的最佳搭配。原A应改为D。",
+      "referenceSources": [
+        {
+          "title": "Merck Manual Professional · Hemothorax",
+          "url": "https://www.merckmanuals.com/professional/injuries-poisoning/thoracic-trauma/hemothorax"
+        }
+      ]
     },
     {
       "stem": "张力性气胸在危急状况下可用一粗针头在患侧第 肋间锁骨中线处刺入胸膜腔。（ ）",
@@ -4000,8 +4085,23 @@
         "lineEnd": 168,
         "raw": "74、张力性气胸紧急减压的并发症不包括？（B）\nA:肋间血管损伤D:肋骨骨折C:肺破裂D.感染"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "B"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "B：肋骨骨折（网页规范编号；原文件该项误标为D）。",
+      "referenceRationale": "本题按张力性气胸针刺紧急减压理解。常见操作并发症包括肺或膈肌损伤、肋间神经血管束损伤、出血、感染等；肋骨骨折不是通常列举的针刺减压并发症。原答案B与第二项的内容相符，可修复选项标签，不改变选项内容。",
+      "referenceSources": [
+        {
+          "title": "Merck Manual Professional · How To Do Needle Thoracostomy",
+          "url": "https://www.merckmanuals.com/en-ca/professional/pulmonary-disorders/how-to-do-pulmonary-procedures/how-to-do-needle-thoracostomy?media=print"
+        }
+      ]
     },
     {
       "stem": "张力性气胸紧急减压时穿刺导管最小长度是？（ ）",
@@ -5346,8 +5446,23 @@
         "lineEnd": 226,
         "raw": "97、关于GCS昏迷评分方法，描述正确的是（D）\nA.是根据病人睁眼、意识语音及运动对刺激的不同反应进行打分，然后将三种分相加\nB.GCS满分为15分，7分以下为昏迷\nC.13分～15分为轻度意识障碍脑损伤，8分～12分为中度意识障碍9～12分为中度脑损伤，8或8以下为严重脑损伤\nD.评分小于或等于8分者为重症\nE.评分越低，说明病情越轻，预后越好"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "A和D的核心表述均正确：GCS评估睁眼、言语、运动反应；GCS≤8分属重度颅脑损伤常用界值。原题不能可靠地只选D。",
+      "referenceRationale": "GCS总分3–15分，分数越低意识障碍越重。常用创伤分级为轻度13–15分、中度9–12分、重度3–8分。C把“8–12分”和“9–12分”混写，边界相互矛盾；B的“7分以下”也不是规范的≤8分界值。应背完整分级，不把混乱原选项作为标准。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第66章：格拉斯哥昏迷量表",
+          "pdfPages": [
+            362
+          ]
+        }
+      ]
     },
     {
       "stem": "清创术下列操作哪项是错误的。（ ）",
@@ -5778,8 +5893,27 @@
         "lineEnd": 250,
         "raw": "105、大腿上的止血带的标准部位（C）\nA、大腿上1/3 B、大腿1/2 C、大腿中下1/3交界处 D、大腿上1/4"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "versioned",
+      "referenceAnswerText": "按原文件所属的固定部位教学表述，参考 C：大腿中下1/3交界处；实际急救应根据出血伤口定位，不能机械套用固定大腿分段。",
+      "referenceRationale": "原C并非可直接判定为笔误的答案，既往护理教学资料可见这一表述。现代红十字会强调止血带位于伤口近心端约5–7.5cm并避开关节。题干没有交代伤口位置、止血带类型和教学版本，故保留旧题参考答案并标版本差异。",
+      "referenceSources": [
+        {
+          "title": "湖北民族大学医学部转载《临床护理实践指南》（2017页面）",
+          "url": "https://www.hbmzu.edu.cn/yxb/info/1028/3910.htm"
+        },
+        {
+          "title": "American Red Cross · How to Apply a Tourniquet（2024）",
+          "url": "https://www.redcross.org/take-a-class/resources/articles/how-to-apply-a-tourniquet"
+        }
+      ]
     },
     {
       "stem": "下列哪种体征是骨折的专有体征（ ）",
@@ -6805,8 +6939,23 @@
         "lineEnd": 292,
         "raw": "4、银环蛇咬伤致命的主要原因  D\n   A．循环衰竭   B．DIC   D．呼吸衰竭   C．肾功能衰竭/////   E．肝功能衰竭"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D：呼吸衰竭。",
+      "referenceRationale": "银环蛇以神经毒作用为主，可造成神经肌肉传递障碍和呼吸肌麻痹，严重时发生呼吸衰竭。应按“呼吸衰竭”这一选项内容判断，原文件肾衰竭后面的斜线标记不可靠；本题选项顺序为A、B、D、C、E，不要把第三项误认作C。",
+      "referenceSources": [
+        {
+          "title": "Mao 等：Bungarus multicinctus multicinctus Snakebite in Taiwan（作者机构资料页，2017）",
+          "url": "https://scholar.nycu.edu.tw/en/publications/bungarus-multicinctus-multicinctus-snakebite-in-taiwan/"
+        }
+      ]
     },
     {
       "stem": "毒蛇咬伤最有效的早期处理是",
@@ -7718,8 +7867,23 @@
         "lineEnd": 330,
         "raw": "20、支气管哮喘发作时，下列哪项能支气管扩张剂的疗效\n  A.酸中毒///////  B.缺氧未纠正  C.感染未控制  D.未并用糖皮质激素E.未补充补液"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "A"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "若题干缺字原意为“能降低/减弱支气管扩张剂疗效”，参考 A：酸中毒。原题少了关键动词，暂不作唯一判分。",
+      "referenceRationale": "酸血症可加重支气管痉挛、影响支气管扩张药发挥作用。这里只能按“减弱疗效”的假定补充知识点；不能把没有写出的“降低”当成已核实原文。若题目问“增强疗效”，现有题干与选项需要重新核对。",
+      "referenceSources": [
+        {
+          "title": "人民卫生出版社·人卫临床助手：重症哮喘",
+          "url": "https://ccdas.pmphai.com/appdisease/toPcDetail?id=0001AA100000000EN8L3&knowledgeLibPrefix=disease"
+        }
+      ]
     },
     {
       "stem": "重度支气管哮喘发作时，最主要的临床表现是",
@@ -8517,8 +8681,21 @@
         "lineEnd": 361,
         "raw": "34、患者女性，24岁，大量胸水，呼吸困难，穿刺抽液时突然面色苍白，出冷汗，血压下降，应给予哪项处理\nA.氨茶碱+葡萄糖静脉滴注B.西地兰0.4mg缓慢静脉推注\nC.平卧，0.1肾上腺素0.5ml皮下注射/////D.立即快速输低右E.静脉快滴升压药物"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "考点是胸膜反应/血管迷走反应：立即停止抽液，协助平卧，监测血压、心率与呼吸并评估原因。原C含不完整药物浓度，不能把整项作为完整可靠的参考处方。",
+      "referenceRationale": "抽液过程中突然苍白、冷汗、血压下降，符合迷走反应的常见表现，但还须排除出血、气胸等并发症。现有选项中C的平卧方向与旧题意图相符，肾上腺素浓度却漏写单位，且是否需要药物应根据评估决定；不能补造剂量或以快速升压药替代停止操作和原因评估。",
+      "referenceSources": [
+        {
+          "title": "Vanderbilt University Medical Center · Thoracentesis 操作手册",
+          "url": "https://vimbook.vumc.org/procedures/thoracentesis"
+        }
+      ]
     },
     {
       "stem": "慢支急性发作期治疗最主要的措施是",
@@ -10114,8 +10291,33 @@
         "lineEnd": 421,
         "raw": "62、下列情况哪一项造成心脏负荷增加而导致心力衰竭\n　A主动脉狭窄　B.输液过多过快////　C.肺心病　D.心包炎　E.二尖瓣狭窄"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "若问“容量负荷增加”，选 B：输液过多过快；若仅问“心脏负荷增加”，A、B、C均有相应机制，原题不能唯一单选。",
+      "referenceRationale": "主动脉狭窄增加左室压力负荷；输液过多过快增加容量负荷；肺心病相关肺动脉高压增加右室后负荷。题干缺少“容量/前负荷”等限定，不宜只凭原答案选择。记忆时区分容量负荷与压力负荷。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第39章：后负荷与右室功能",
+          "pdfPages": [
+            95
+          ]
+        },
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第43章：液体管理",
+          "pdfPages": [
+            131
+          ]
+        },
+        {
+          "title": "MSD Manual Professional · Stable Angina",
+          "url": "https://www.msdmanuals.com/professional/cardiovascular-disorders/coronary-artery-disease/stable-angina"
+        }
+      ]
     },
     {
       "stem": "导致急性肺水肿的直接原因是",
@@ -10229,8 +10431,32 @@
         "lineEnd": 426,
         "raw": "64、男、0岁、高血压患者，突然心悸、气促、咳粉红色泡沬痰。查体：血压26.6/15.96KPa(200/120mmHg)，心率136次/分，除其他治疗外，还应选用下列哪组药物\n　A.西地兰、硝酸甘油、异丙肾上腺素　B.硝普钠、西地兰、速尿///　C.毒毛旋花子甙K、硝普钠、心得安\n　D胍乙定、酚妥拉明、西地兰　E.硝酸甘油、西地兰、多巴安"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "B"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "versioned",
+      "referenceAnswerText": "按成人高血压急性左心衰竭的旧式选择题设定，参考 B：硝普钠、西地兰、速尿。",
+      "referenceRationale": "粉红泡沫痰、呼吸困难与显著高血压提示高血压急症合并急性肺水肿。选项B体现扩血管减负荷和利尿；其余组含不合适的升压/加快心率或急性期负性肌力药。原文“0岁”明显残缺，但实际年龄无法恢复；而西地兰并非所有现代高血压肺水肿病例都常规使用，因此给出旧题参考答案，不把整组药物作为通用处置方案。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第42章：高血压危象用药",
+          "pdfPages": [
+            123
+          ]
+        },
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第49章：急性肺水肿治疗",
+          "pdfPages": [
+            218,
+            219
+          ]
+        }
+      ]
     },
     {
       "stem": "关于左心衰竭时呼吸困难，下列哪项是错误的",
@@ -13227,7 +13453,7 @@
       ],
       "answers": [],
       "rawAnswers": [],
-      "type": "unknown",
+      "type": "single",
       "answerStatus": "missing",
       "answerNote": "原文件没有可明确识别的答案，暂不判分。",
       "rationale": "",
@@ -13249,7 +13475,22 @@
         "lineEnd": 550,
         "raw": "118、下列哪顶不是肺动脉瓣狭窄的临床表现\nA.胸骨左缘第二肋间可触及收缩期震颤B.心电图示右室扩大C.胸骨左缘第二肋间可听到Ⅲ-Ⅳ/6级收缩期杂音\nD.X线示左室大，肺瘀血  E.活动后心悸、气短"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。"
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "originalType": "unknown",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D：X线示左室大、肺淤血。",
+      "referenceRationale": "肺动脉瓣狭窄主要造成右室流出道梗阻与右室压力负荷增加，典型为右室肥厚/扩大、肺动脉瓣区收缩期喷射性杂音，严重时伴收缩期震颤。左室扩大和肺淤血不是单纯肺动脉瓣狭窄的典型组合。",
+      "referenceSources": [
+        {
+          "title": "Merck Manual Professional · Pulmonary Stenosis",
+          "url": "https://www.merckmanuals.com/en-ca/professional/cardiovascular-disorders/valvular-disorders/pulmonary-stenosis"
+        }
+      ]
     },
     {
       "stem": "女性，30岁，风湿性心脏病史15年、平时一般活动症状不多，2天来明显心悸、气短、不能平卧，查体：心率135次/分，律绝对不齐，心电图示房颤，应立即静脉给予",
@@ -13282,7 +13523,7 @@
       ],
       "answers": [],
       "rawAnswers": [],
-      "type": "unknown",
+      "type": "single",
       "answerStatus": "missing",
       "answerNote": "原文件没有可明确识别的答案，暂不判分。",
       "rationale": "",
@@ -13304,7 +13545,31 @@
         "lineEnd": 552,
         "raw": "119、女性，30岁，风湿性心脏病史15年、平时一般活动症状不多，2天来明显心悸、气短、不能平卧，查体：心率135次/分，律绝对不齐，心电图示房颤，应立即静脉给予\nA.利多卡因 B.异搏定 C.心得安 D.西地兰  E.速尿"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。"
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "originalType": "unknown",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D：西地兰（在本题所列药物及风湿性心脏病、快速房颤合并心衰的教材情境下）。",
+      "referenceRationale": "快速房颤使舒张充盈受损并诱发或加重心衰；洋地黄类可减慢房室传导并改善收缩功能。利多卡因主要针对室性心律失常；异搏定、心得安在失代偿心衰时不宜贸然静脉应用；速尿可缓解淤血但不能解决快速房颤这一触发因素。若出现血流动力学不稳定，处理应优先考虑同步电复律，而不是把本题药物答案泛用于所有房颤急症。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第43章：洋地黄类药物",
+          "pdfPages": [
+            134,
+            135
+          ]
+        },
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第49章：房颤/房扑诱发肺水肿",
+          "pdfPages": [
+            219
+          ]
+        }
+      ]
     },
     {
       "stem": "严重二尖瓣狭窄时，不易发生下列哪种并发症",
@@ -13926,8 +14191,29 @@
         "lineEnd": 579,
         "raw": "130、以下诊断洋地黄中毒，最为特异的心电图改变是\nA.窦性心动过速 B.房扑转为房颤 C.Q-T间期缩短 D.P-R间期由0.19秒增至0.21秒/////\nE.房性心动过速合并房室传导阻滞"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "E"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "E：房性心动过速合并房室传导阻滞。",
+      "referenceRationale": "洋地黄中毒可同时增强异位自律性并抑制房室传导，出现快速房性心律与房室阻滞并存，是所列选项中更有特征性的组合。轻度P-R间期延长或Q-T缩短本身不能特异地证明中毒。原D应修正为E。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第43章：洋地黄不良反应",
+          "pdfPages": [
+            135
+          ]
+        },
+        {
+          "title": "Digoxin 产品说明书 · 过量的心脏表现",
+          "url": "https://www.medicines.org.uk/emc/product/102583/smpc"
+        }
+      ]
     },
     {
       "stem": "洋地黄中毒所致的室上性心动过速，不宜采用",
@@ -14145,8 +14431,28 @@
         "lineEnd": 587,
         "raw": "134、下列哪种情况不是应用洋地黄的适应症\nA.各种原因引起的心力衰竭 B.室上性心动过速 C.快速心室率的心房颤动 D.快速心室率的心///"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "不能确定原题选项字母：D“快速心室率的心……”已被截断。应记住洋地黄适用于部分心衰及房颤心室率控制，并非所有心衰或快速心律失常均适用。",
+      "referenceRationale": "D可能涉及不同疾病，不能擅自补成房扑、房颤或预激综合征。A“各种原因”也过于绝对；洋地黄中毒引起的心律失常、预激伴房颤、室性心动过速等并非适应证。原D标记只能保留为来源记录，无法凭残文恢复唯一答案。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第43章：洋地黄临床应用及禁忌",
+          "pdfPages": [
+            134,
+            135
+          ]
+        },
+        {
+          "title": "Digoxin 产品说明书 · 过量的心脏表现",
+          "url": "https://www.medicines.org.uk/emc/product/102583/smpc"
+        }
+      ]
     },
     {
       "stem": "心力衰竭引起的室性早搏，未经药物治疗应首选",
@@ -14374,8 +14680,27 @@
         "lineEnd": 598,
         "raw": "138下列哪项表现不符合典型心绞痛发作\nA. 胸骨后压榨性疼痛 B. 疼痛很少超过15分钟 C. 休息后5分钟内消失\nD. 含硝酸甘油1分钟内疼痛缓解////// E. 疼痛发作均有诱因"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "此题不宜强制唯一判分。若泛指心绞痛，E“均有诱因”过于绝对；原D可能针对命题者规定的硝酸甘油起效时间，但“1分钟内”不足以作为可靠鉴别标准。",
+      "referenceRationale": "典型稳定性心绞痛常由劳力、情绪诱发，但静息性或血管痉挛性心绞痛可没有明显外部诱因。舌下硝酸甘油通常数分钟内缓解，MSD资料记载明显缓解多在1.5–3分钟；药物起效时间有差异。因此要记症状模式和持续时间，不应把“1分钟”当成排除心绞痛的绝对界限。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第40章：不同类型心绞痛",
+          "pdfPages": [
+            100
+          ]
+        },
+        {
+          "title": "MSD Manual Professional · Stable Angina",
+          "url": "https://www.msdmanuals.com/professional/cardiovascular-disorders/coronary-artery-disease/stable-angina"
+        }
+      ]
     },
     {
       "stem": "急性心肌梗死的诊断，哪项是错误的",
@@ -14433,8 +14758,29 @@
         "lineEnd": 600,
         "raw": "139、急性心肌梗死的诊断，哪项是错误的\nA.无诱因心前区剧痛 B.疼痛开始伴发热///// C.中年以上突然休克 D频繁呕吐，上腹痛 F. 以上都不是"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "B"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "B：疼痛开始即伴发热（在现有可见选项中为不典型/不正确的诊断表述）。",
+      "referenceRationale": "心肌梗死相关低热通常在发病一段时间后出现，常在约12小时之后，并非典型地与疼痛同时起始。心梗也可表现为休克、恶心呕吐或上腹不适。原选项从D跳到F应保留提示，但不妨碍对现有B项的判断；诊断仍须结合心电图和肌钙蛋白，不能仅凭症状。",
+      "referenceSources": [
+        {
+          "title": "McGraw Hill · Quick Medical Diagnosis & Treatment 2025：Acute MI with ST-Segment Elevation",
+          "url": "https://accessmedicine.mhmedical.com/content.aspx?bookid=3516&sectionid=289638152"
+        },
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第40章：ACS临床表现",
+          "pdfPages": [
+            100
+          ]
+        }
+      ]
     },
     {
       "stem": "急性心肌梗死最早期的心电图改变是",
@@ -14771,8 +15117,29 @@
         "lineEnd": 613,
         "raw": "145、硝酸甘油缓解心绞痛主要是由于\nA.直接扩张冠状动脉///// B.降低心肌耗氧量 C.增加心肌收缩 D.减轻后负荷 E.降低心肌痛阈"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "B"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "B：降低心肌耗氧量。",
+      "referenceRationale": "硝酸甘油扩张容量血管，减少回心血量与心室壁张力，从而降低氧需求；也可扩张冠脉、缓解痉挛，但一般心绞痛题中“主要机制”的最佳概括是降低耗氧，而不是只写直接扩张冠脉。原A应修正为B。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》指定删减版 · 第49章：硝酸甘油血流动力学作用",
+          "pdfPages": [
+            218
+          ]
+        },
+        {
+          "title": "MSD Manual Professional · Stable Angina",
+          "url": "https://www.msdmanuals.com/professional/cardiovascular-disorders/coronary-artery-disease/stable-angina"
+        }
+      ]
     },
     {
       "stem": "有关急性心肌梗死下列哪项不正确",
@@ -15731,8 +16098,23 @@
         "lineEnd": 651,
         "raw": "162、男性，20岁。肌注青霉素后突然昏倒，血压测不到，最主要的抢救措施是\nA.立即静脉滴注低分子右旋糖酐B.静脉滴注地塞米松C.立即静脉注射肾上腺素////D.静脉滴注间羟胺"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "versioned",
+      "referenceAnswerText": "原题命题意图为 C：使用肾上腺素；但不能照搬“立即静脉注射”。按现行过敏反应急救原则，尚有自主循环者首先肌内注射肾上腺素。",
+      "referenceRationale": "青霉素注射后迅速发生循环衰竭，符合严重过敏反应/过敏性休克。肾上腺素是首要药物，糖皮质激素、间羟胺或单纯扩容不能代替它。原 C 的给药途径缺少适用条件；血压测不到不等于已确认心搏骤停。静脉肾上腺素仅由有经验的专业人员在适当监护条件下用于特定情况；若已心搏骤停，则进入心肺复苏流程。因此本题保留原意参考，不把 C 的完整表述作为通用正确用药指令。",
+      "referenceSources": [
+        {
+          "title": "Resuscitation Council UK：Anaphylaxis，静脉与肌内肾上腺素的适用情形",
+          "url": "https://www.resus.org.uk/library/additional-guidance/guidance-anaphylaxis"
+        }
+      ]
     },
     {
       "stem": "休克的基本原因是",
@@ -16245,8 +16627,25 @@
         "lineEnd": 670,
         "raw": "171、上消化道大出血最常见的原因是\nA.肝硬化食道静脉曲张破裂B.糜烂性出血性胃炎///////C.消化性溃疡D.胃癌E.胃黏膜脱垂症"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "C：消化性溃疡。",
+      "referenceRationale": "教材列出的我国急性上消化道出血常见病因依次为消化性溃疡、食管静脉曲张破裂、应激性胃黏膜病变和胃肿瘤；其中消化性溃疡约占一半。故原文件 B 应改为 C。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            322
+          ]
+        }
+      ]
     },
     {
       "stem": "出血坏死型胰腺炎的特征是",
@@ -16360,8 +16759,25 @@
         "lineEnd": 674,
         "raw": "173、下列哪项最能提示为出血坏死 型胰腺炎\nA.休克B.黄疸/////C.高热D.上腹部压痛及反跳痛E.两侧腹部皮肤出现皮下出血"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "E"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "E：两侧腹部皮肤出现皮下出血。",
+      "referenceRationale": "腰部或侧腹皮肤青紫瘀斑为 Grey Turner 征，与胰液外溢、皮下组织损伤及毛细血管出血有关，是这些选项中更有提示性的表现。黄疸可来自胆道梗阻或肿胀胰头压迫胆总管，不能据此判断出血坏死。该体征并非所有重症胰腺炎都出现，也不是单独确诊依据。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            313
+          ]
+        }
+      ]
     },
     {
       "stem": "急性出血坏死胰腺炎的主要表现，以下哪项是错误的",
@@ -16874,8 +17290,25 @@
         "lineEnd": 692,
         "raw": "182/尿毒症患者纠正酸中毒后，最迅速有效的治疗措施是\nA.口服氢氧化铝凝胶B.肌注VITD3C.口服乳酸钙片D肌注安定E.静滴葡萄糖酸钙//////"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "E"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "若题干漏掉的是“纠正酸中毒后出现低钙性手足搐搦”，参考 E：静脉补充葡萄糖酸钙。现存题干不足以决定治疗。",
+      "referenceRationale": "纠正酸中毒可能使游离钙降低，诱发低钙症状；有症状的急性低钙血症需静脉补钙，口服钙剂或维生素D起效较慢。教材也明确急性或严重低钙血症应静脉补钙。但本题没有写出低钙、抽搐或其他治疗目标，不能给所有“纠酸后”的尿毒症患者一律补钙。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            286
+          ]
+        }
+      ]
     },
     {
       "stem": "关于慢性肾功能衰竭时的心率失常，下列哪项是错误的",
@@ -17787,8 +18220,25 @@
         "lineEnd": 727,
         "raw": "198、脑出血病人出现一侧瞳孔，对光反射消失\nA.聂叶钩回疝//////B.枕大孔疝C.交感神经损伤D.脑室出血E.丘脑下部损伤"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "A"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "如果缺字是“一侧瞳孔散大、对光反射消失”，参考 A：颞叶钩回疝（小脑幕切迹疝）。",
+      "referenceRationale": "钩回疝压迫同侧动眼神经，可出现同侧瞳孔散大、固定或对光反射消失，常伴意识及运动体征恶化。教材将散大固定瞳孔的常见原因指向海马钩回疝。但原题漏掉瞳孔大小变化，现存表述只能作条件性回答；A 中“聂叶”为“颞叶”的笔误。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            360
+          ]
+        }
+      ]
     },
     {
       "stem": "脑出血病人出现双侧瞳孔，对光反射消失",
@@ -17845,8 +18295,23 @@
         "lineEnd": 729,
         "raw": "199、脑出血病人出现双侧瞳孔，对光反射消失\nA.聂叶钩回疝/////B.枕大孔疝C.交感神经损伤D.脑室出血E.丘脑下部损伤"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "不能由现有文字唯一定位脑疝类型；若为双侧瞳孔散大固定，应考虑严重脑干功能受损或脑疝进展。",
+      "referenceRationale": "题干漏掉双侧瞳孔的具体变化，且双侧对光反射消失并非某一种脑疝所独有。晚期钩回疝可能出现双侧散大固定，但不能仅凭这一句认定 A，也不能径直改成 B 枕大孔疝。必须结合意识、呼吸、瞳孔大小及其他脑干体征。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            360
+          ]
+        }
+      ]
     },
     {
       "stem": "急性脑血管疾病的病人病灶侧瞳孔小",
@@ -18473,8 +18938,21 @@
         "lineEnd": 755,
         "raw": "210、治疗脑水肿\nA.尽早使用肾上腺皮质激素//////B.等病情稳定后有肾上腺皮质激素\nC.其他药物无效后用肾上腺皮质激素D.不用肾上腺皮质激素\nE.尽量少用肾上腺皮质激素，因为它可引起上消化道大出血"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "需按病因回答：脑出血相关脑水肿不应常规使用糖皮质激素（对应 D 的情境）；某些病因如细菌性脑膜炎可需要早期辅助激素。原题没有唯一答案。",
+      "referenceRationale": "“脑水肿”是不同病因导致的综合表现，激素不是所有脑水肿的通用治疗。NCS 指南反对为改善脑出血结局而使用皮质激素，同时对细菌性脑膜炎提出在首次抗菌药前或同时给予地塞米松的建议。因此不能把 A“尽早使用”或 D“不用”推广到所有患者。",
+      "referenceSources": [
+        {
+          "title": "Neurocritical Care Society：Guidelines for the Acute Treatment of Cerebral Edema（2020）",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7272487/"
+        }
+      ]
     },
     {
       "stem": "桥脑出血可出现",
@@ -18873,8 +19351,25 @@
         "lineEnd": 769,
         "raw": "217、蛛网膜下腔出血最可靠的诊断依据是\nA.偏瘫B.一侧动眼神经麻痹C.头痛和呕吐D.脑膜刺激征/////E.均匀血性脑脊液"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "E"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "E：均匀血性脑脊液（在所给选项中）。",
+      "referenceRationale": "均匀血性脑脊液比头痛、呕吐、脑膜刺激征更直接支持蛛网膜下腔出血，需排除穿刺损伤造成的血性标本。教材说明 CT 联合必要时腰穿用于确诊；现行临床并非不经评估就直接腰穿。该题未提供 CT 选项，故在 A–E 中选 E，原 D 仅是临床提示。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            368
+          ]
+        }
+      ]
     },
     {
       "stem": "蛛网膜下腔出血急性期的治疗选用",
@@ -19444,8 +19939,26 @@
         "lineEnd": 794,
         "raw": "227、癫痫持续状态的常见原因\nA.连续单纯部分发作\nB.复杂部分性发作持续数天\nC.一侧肢体间断抽搐\nD.长期用药抽搐仍经常发作\nE.全面性强直一阵挛性发作频繁出现，间歇期仍意识不清/////"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "E"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "如果题干原意是“哪项符合全面惊厥性癫痫持续状态”，参考 E；若仍问“常见原因”，现有选项没有合适答案。",
+      "referenceRationale": "E 描述反复全面性强直-阵挛发作且发作间期意识未恢复，符合持续状态的表现，而不是病因。教材将持续发作及发作间期意识未恢复列入定义；持续状态可由停药、脑损伤、代谢紊乱等诱发。不能未经说明把原题“原因”改成“表现”后计分。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            389,
+            391
+          ]
+        }
+      ]
     },
     {
       "stem": "全面性强直一阵挛性发作时，首先要",
@@ -19616,8 +20129,23 @@
         "lineEnd": 812,
         "raw": "230、中毒是指\nA.放射性核素引起的机体损伤\nB.中毒引起的疾病/////\nC.物理因素所致的病变\nD.化学物质引起的损害\nE.大量螺旋体在体内死亡引起"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D：化学物质引起的损害。",
+      "referenceRationale": "在这些选项中，D 最符合毒物通过摄入、吸入、注射或皮肤接触等途径造成机体损伤的含义。原 B“中毒引起的疾病”是循环表述，不能作为定义；物理性损伤、放射损伤及螺旋体死亡反应不是本题所指的毒物中毒。",
+      "referenceSources": [
+        {
+          "title": "美国国家医学图书馆 MedlinePlus：Poisoning",
+          "url": "https://medlineplus.gov/poisoning.html"
+        }
+      ]
     },
     {
       "stem": "口服所致急性中毒时，下列哪种情况不宜洗胃",
@@ -20358,8 +20886,27 @@
         "lineEnd": 890,
         "raw": "243、一氧化碳中毒时，下列哪项是不正确的\nA.老人和孩子易患\nB.老人应与脑血管意外鉴别\nC.中毒严重时面部可无樱桃红表现/////\nD.应立即原地抢救\nE.神志恢复后可出现神经系统后遗症"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D：“应立即原地抢救”不正确；应先保证救援者安全，并尽快脱离一氧化碳暴露环境。",
+      "referenceRationale": "不能在持续有毒气体暴露的环境中不加防护地原地处理。樱桃红皮肤不是必有体征，缺少这一表现不能排除重度中毒，所以 C 不应作为错误项。儿童、老人等更易受影响，苏醒后仍须注意迟发性神经精神症状。",
+      "referenceSources": [
+        {
+          "title": "Gloucestershire Hospitals NHS：Carboxyhaemoglobin，经典樱桃红体征少见",
+          "url": "https://www.gloshospitals.nhs.uk/our-services/services-we-offer/pathology/tests-and-investigations/carboxyhaemoglobin-carbon-monoxide-co/"
+        },
+        {
+          "title": "CDC：Clinical Guidance for Carbon Monoxide Poisoning",
+          "url": "https://www.cdc.gov/carbon-monoxide/hcp/clinical-guidance/index.html"
+        }
+      ]
     },
     {
       "stem": "重度一氧化碳中毒患者昏迷期间，下列哪项并发症最不常见",
@@ -20758,8 +21305,23 @@
         "lineEnd": 932,
         "raw": "250、创伤性窒息，下列哪项是错误的：\nA.受伤可使声门突然关闭，使胸内压力骤升\nB.呼吸困难非常突出\nC.上半身广泛淤血\nD.眼眶内陷，眼球突出\nE.预后一般良好/////"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "按现存文字，D 中“眼眶内陷”最不符合典型表现；但原题存在错字和措辞问题，不宜强制作唯一单选。原 E“预后一般良好”不能直接判错。",
+      "referenceRationale": "创伤性窒息常见面颈及上胸部瘀血、球结膜下出血，可出现眼球突出；单纯病例预后通常较好，预后主要受伴随损伤及缺氧程度影响。D 将“眼眶内陷”与“眼球突出”并列，疑有转录错误；B 把呼吸困难概括为“非常突出”也不是所有患者共有特点。因此提供 D 为按字面纠错方向，保留不计分。",
+      "referenceSources": [
+        {
+          "title": "Eken & Yıgıt：Traumatic asphyxia: a rare syndrome in trauma patients（2009）",
+          "url": "https://link.springer.com/article/10.1007/s12245-009-0115-x"
+        }
+      ]
     },
     {
       "stem": "遇到下列情况，首先应抢救",
@@ -22127,8 +22689,25 @@
         "lineEnd": 1076,
         "raw": "274、下列急性坏死性胰腺炎的临床表现中，下列哪项是错误的\nA.左胸腔积液或左下肺炎症\nB.肠鸣音消失或高度腹胀//////\nC.血钙>2.5mmol/L\nD.早期血尿淀粉酶无改变\nE.黄疸"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "最明确的错误方向为 C：血钙＞2.5 mmol/L；重症胰腺炎典型为低钙。但 D“早期血尿淀粉酶无改变”也是过度概括，本题不宜强制作唯一单选。",
+      "referenceRationale": "教材描述坏死性胰腺炎可有腹胀、肠鸣音减弱或消失、左胸腔反应性积液及黄疸，故原 B 不是错误项；血钙常在发病后降低。淀粉酶多升高，但过早取样或部分严重病例可不高，不能用“早期一律无改变”概括。C 是传统出题的最可能答案，D 的现存文字使单选唯一性受损。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            313
+          ]
+        }
+      ]
     },
     {
       "stem": "急性胰腺炎时，血淀粉酶升高的规律为",
@@ -22926,8 +23505,23 @@
         "lineEnd": 1160,
         "raw": "288、胸外电击除颤时，电极板安放的位置应在\nA.心尖区后胸壁\nB.左第二肋间前胸壁，心尖区\nC.左第二肋间前胸壁，心尖区后胸壁\nD.左第二肋间前胸壁，心尖区或心尖区后胸壁//////\nE.以上都可以"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "标准前外侧位置为右锁骨下、胸骨右侧与左胸外侧心尖附近；也可采用规范的前后位。原选项没有完整准确列出这一标准位置。",
+      "referenceRationale": "教材明确一个电极置于右锁骨下胸骨右侧，另一电极在左乳头左下方。原 B/C/D 均写“左第二肋间”，疑把“右”误写为“左”；A 的两块电极位置也表述不完整。不能在未证实原稿前把左右改动隐藏进答案，更不能选 E“以上都可以”。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            11
+          ]
+        }
+      ]
     },
     {
       "stem": "心脏复跳后开始施行脱水疗法的最佳时机是",
@@ -23210,7 +23804,32 @@
         "lineEnd": 1190,
         "raw": "293、急性出血时，失血量超过总血量的多少时，需输注全血或浓缩红细胞，再配合晶体液和胶体液及血浆以补充血容量\nA. 10%\n B .15%\nC .20％\nD .25%\nE .30%"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。"
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "originalType": "unknown",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "versioned",
+      "referenceAnswerText": "按传统失血比例的考试口径，参考 C：20%。临床输血不能只依据固定失血百分比。",
+      "referenceRationale": "历史临床用血考核标准将失血达血容量20%～50%列为需要加输红细胞的区间，与该题“全血或浓缩红细胞”的旧式问法相符，故参考 C。教材和后续共识强调同时考虑活动性出血、血流动力学、血红蛋白及组织缺氧；血浆、血小板和晶体液的使用也需按具体情况决定，不可将题干整句当作现行通用方案。",
+      "referenceSources": [
+        {
+          "title": "福建省临床用血管理考核评价标准（试行），2011年制定、2012年转发，第3.5.1项",
+          "url": "https://www.fuzhou.gov.cn/zgfzzt/swjw/zfxxgkzl/gkml/xzfggzhgfxwj/201201/t20120130_1562546.htm"
+        },
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            68
+          ]
+        },
+        {
+          "title": "中华医学会消化病学分会：急性上消化道出血急诊诊治流程专家共识（2020版）",
+          "url": "https://csg.cma.org.cn/csg/a/irzs40"
+        }
+      ]
     },
     {
       "stem": "疑输血引起的溶血反应时，下列哪项处理措施不恰当",
@@ -23666,8 +24285,23 @@
         "lineEnd": 1238,
         "raw": "301、革兰阴性杆菌引起的休克、其血液动力学特征为\nA .低排低阻型\n B .排高阻型///////\nC.排低阻型\nD.排高阻型\nE .高排低阻与低排低阻混合型"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "不能凭革兰阴性菌这一条件确定血流动力学型，也不能在缺字的 B/C/D 中选出可靠字母。充分补液后的感染性休克常表现为高排低阻。",
+      "referenceRationale": "教材指出感染性休克的血流动力学主要取决于前负荷，与致病菌种类无明显关系：容量明显不足可低排高阻，恢复前负荷后常为高排低阻。原 B 与 D 都缺“高/低”并且重复，无法还原命题选项；传统将革兰阴性菌一概对应“冷休克、低排高阻”不应作为可靠判分依据。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            76
+          ]
+        }
+      ]
     },
     {
       "stem": "应用血管扩张剂治疗休克的作用机制是",
@@ -24180,8 +24814,21 @@
         "lineEnd": 1292,
         "raw": "310、对氧治疗的描述，下列哪项是错误的\nA. 以纠正低氧血症和提高氧供为目的\n B. 重度通气障碍对氧治疗较敏感，疗效好\nC. 轻度肺部感染对氧治疗较敏感，疗效好\nD. 当肺泡完全萎陷时，氧治疗效果很差//////\nE .当肺泡血流灌流完全停止，氧治疗效果很差"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "无法可靠确定唯一错误选项；可以明确 D“肺泡完全萎陷时氧疗效果差”不应按原标记判错。",
+      "referenceRationale": "完全不通气但仍灌注的肺泡形成分流，单纯增加吸入氧难以充分纠正低氧，D 符合这一生理机制。纯肺泡低通气引起的低氧可对氧疗有反应，但氧疗本身不纠正通气不足及二氧化碳潴留，B 的“疗效好”缺少目标和前提；E 也未区分局部无灌注肺泡与患者总体氧合。原文未限定机制，不能凭猜测将答案换成某一个字母。",
+      "referenceSources": [
+        {
+          "title": "MSD Manual Professional：Measurement of Gas Exchange（低通气与分流对氧疗的反应）",
+          "url": "https://www.msdmanuals.com/professional/pulmonary-disorders/tests-of-pulmonary-function-pft/measurement-of-gas-exchange"
+        }
+      ]
     },
     {
       "stem": "治疗尖端扭转型室速不宜选用下列哪种药物",
@@ -24234,8 +24881,29 @@
         "lineEnd": 1297,
         "raw": "311、治疗尖端扭转型室速不宜选用下列哪种药物\nA. 镁盐\n B. 心得安\nC. 普罗帕酮///////\nE .利多卡因"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "在现存选项中，参考 C：普罗帕酮；由于原文件缺少 D 项，不能确认完整原题的唯一答案。",
+      "referenceRationale": "普罗帕酮可诱发或加重室性心律失常，包括尖端扭转，不是尖端扭转型室速的常规治疗药物。一般需停用致病药、纠正电解质紊乱并考虑镁剂等针对性处理；普萘洛尔的作用与先天性或获得性长QT等具体情境有关。缺失的 D 可能影响单选题成立，所以只给现存选项中的参考。",
+      "referenceSources": [
+        {
+          "title": "DailyMed：Propafenone hydrochloride，5.1 Proarrhythmic Effects",
+          "url": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a96f9c6f-4c9c-4406-bca8-08bf9a4af1f4"
+        },
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            118
+          ]
+        }
+      ]
     },
     {
       "stem": "心脏骤停时最迅速的处理是",
@@ -24349,8 +25017,29 @@
         "lineEnd": 1309,
         "raw": "313、初期复苏的任务和步骤的正确顺序是\nA .保持呼吸道通畅，口对口人工呼吸，胸外心脏按压\nB.保持呼吸道通畅，胸外心脏按压，口对口人工呼吸\n C.口对口人工呼吸，胸外心脏按压，保持呼吸道通畅\nD.口对口人工呼吸， 保持呼吸道通畅，胸外心脏按压/////\nE.胸外心脏按压，保持呼吸道通畅，口对口人工呼吸"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "E"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "versioned",
+      "referenceAnswerText": "按本次指定教材介绍的2010后成人心肺复苏顺序及现行指南，参考 E：胸外按压→开放气道→人工呼吸（C-A-B）。若明确考2010年前传统顺序，则为 A（A-B-C）。",
+      "referenceRationale": "教材 PDF 第4页明确说明成人基础生命支持从 A-B-C 改为 C-A-B；AHA 2025 仍支持成人先按压。原 D 把人工呼吸放在开放气道之前，在这两种顺序下都不成立。原题未标明年代，故同时保留版本差异供考试核对。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学（第2版）》删减版（PDF阅读器页码）",
+          "pdfPages": [
+            4
+          ]
+        },
+        {
+          "title": "AHA 2025 成人基础生命支持指南",
+          "url": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-basic-life-support"
+        }
+      ]
     },
     {
       "stem": "口对口人工呼吸的操作中，下列哪一项是错误",
@@ -24407,8 +25096,23 @@
         "lineEnd": 1315,
         "raw": "314、口对口人工呼吸的操作中，下列哪一项是错误\nA. 将病人下颌向上、后方钩起以保持呼吸道通畅\n B. 吹气时要看到胸廓起伏\nC. 吹气次数12次/min/////\nD. 吹气时向后压环状软骨\nE .吹气时捏闭病人的鼻孔"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "versioned",
+      "referenceAnswerText": "按现行成人复苏要求，D“吹气时向后压环状软骨”是不推荐的常规操作；C“12次/min”也不能作为所有情境的固定频率，所以原题不是可靠单选。",
+      "referenceRationale": "AHA 2025 不推荐成人心搏骤停时常规环状软骨压迫，因为可能妨碍通气。成人有脉但呼吸停止时，参考通气频率为每6秒1次；无高级气道的成人心搏骤停通常按30次按压配2次通气，不能一律使用12次/min。吹气应见胸廓抬起、避免过度通气。原题未注明患者是否有脉搏、是否心搏骤停及指南年份，故给出分情境答案。",
+      "referenceSources": [
+        {
+          "title": "AHA 2025 成人基础生命支持指南",
+          "url": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-basic-life-support"
+        }
+      ]
     },
     {
       "stem": "胸外心脏按压的部位应在",
@@ -24579,8 +25283,29 @@
         "lineEnd": 1333,
         "raw": "317、心脏复苏的药物治疗，首选给药途径为\nA. 心内注射\n B. 气管内给药/////\nC. 静脉给药\nD. 肌肉注射\nE .皮下注射"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "C．静脉给药。",
+      "referenceRationale": "教材要求心肺复苏开始后尽快建立静脉通路；经气管给药仅是教材中静脉通路一时不能建立时的替代途径，并非首选。2025 AHA同样将静脉途径列为首选，静脉难以建立时可考虑骨内途径。原标记B不宜保留为判分答案。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学》第2版删减版，第29章",
+          "pdfPages": [
+            13
+          ]
+        },
+        {
+          "title": "AHA 2025 成人高级生命支持：给药途径、升压药和电治疗",
+          "url": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-advanced-life-support"
+        }
+      ]
     },
     {
       "stem": "心脏复苏时，使心脏复跳效果最佳的药物是",
@@ -24637,8 +25362,29 @@
         "lineEnd": 1339,
         "raw": "318、心脏复苏时，使心脏复跳效果最佳的药物是\nA .异丙肾上腺素\nB.肾上腺素\nC.利多卡因/////\nD. 去甲肾上腺素\nE .阿托品"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "B"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "B．肾上腺素。",
+      "referenceRationale": "在这些选项中，应选促进自主循环恢复的一线复苏药肾上腺素。其血管收缩作用有助于提高冠脉灌注；利多卡因用于特定室性心律失常，并不是各种心搏骤停的首选复跳药。“效果最佳”是原题的概括措辞，不表示药物能替代高质量按压和及时除颤，也不等于已证实改善神经功能结局。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学》第2版删减版，第29章",
+          "pdfPages": [
+            13
+          ]
+        },
+        {
+          "title": "AHA 2025 成人高级生命支持：给药途径、升压药和电治疗",
+          "url": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-advanced-life-support"
+        }
+      ]
     },
     {
       "stem": "胸外除颤电极板放置的位置",
@@ -26438,7 +27184,7 @@
       ],
       "answers": [],
       "rawAnswers": [],
-      "type": "unknown",
+      "type": "single",
       "answerStatus": "missing",
       "answerNote": "原文件没有可明确识别的答案，暂不判分。",
       "rationale": "",
@@ -26460,7 +27206,22 @@
         "lineEnd": 1531,
         "raw": "350、非同步电复律适用于\nA.心房扑动\nB.心房颤动\nC.心室纤颤\nD.室上性心动过速\nE.室性心动过速"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。"
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "originalType": "unknown",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "C．心室纤颤。",
+      "referenceRationale": "心室纤颤没有可供同步的规则R波，应采用非同步电击除颤。无脉室速及多形性室速也可需非同步电击，但E只写“室性心动过速”，未限定这些情形；有脉的单形性室速若需电治疗，通常采用同步复律。因此本题按单选取C。",
+      "referenceSources": [
+        {
+          "title": "AHA 2025 成人高级生命支持：给药途径、升压药和电治疗",
+          "url": "https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-advanced-life-support"
+        }
+      ]
     },
     {
       "stem": "心脏性猝死的时间定义为",
@@ -27120,7 +27881,7 @@
       ],
       "answers": [],
       "rawAnswers": [],
-      "type": "unknown",
+      "type": "single",
       "answerStatus": "missing",
       "answerNote": "原文件没有可明确识别的答案，暂不判分。",
       "rationale": "",
@@ -27142,7 +27903,22 @@
         "lineEnd": 1604,
         "raw": "362、患者右手掌被一薄而窄的铁器插入至第三掌骨，造成中指屈指肌腱及桡侧固有神经损伤，该伤应为\nA.切割伤\nB.刺伤\nC.撕脱伤\nD.压伤\nE.复合伤"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。"
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "originalType": "unknown",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "B"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "B．刺伤。",
+      "referenceRationale": "薄而窄的器物以尖端进入深部组织，符合刺伤的小入口、深伤道特征，可同时损伤肌腱和神经。单一机械致伤因素造成多种组织损伤，并不因此改称复合伤。",
+      "referenceSources": [
+        {
+          "title": "美国国家医学图书馆 MedlinePlus：切割伤与刺伤",
+          "url": "https://medlineplus.gov/ency/article/000043.htm"
+        }
+      ]
     },
     {
       "stem": "吗啡对中枢神经系统的作用是",
@@ -28396,8 +29172,23 @@
         "lineEnd": 1736,
         "raw": "384、关于肝性脑病哪项是错误的\nA．前驱期：轻度性格改变，可有扑翼样震颤，脑电图多数正常\nB．昏迷前期：意识错乱，扑翼样震颤存在，脑电图异常\nC．昏睡期：昏睡和精神错乱，扑翼样震颤可引出，脑电图异常/////\nD．昏迷期：（浅昏迷）：神志完全丧失，扑翼样震颤仍可引出，脑电图明显异常\nE．昏迷期：（浅昏迷）：神志完全丧失，扑翼样震颤无法引出，脑电图明显异常"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D．“浅昏迷时扑翼样震颤仍可引出”不正确。",
+      "referenceRationale": "扑翼样震颤的检查需要维持伸臂、伸腕等姿势。神志完全丧失进入昏迷时，不能按要求维持该姿势，通常无法引出。C所述昏睡期与昏迷不同，患者仍可能被唤醒，因此“可引出”不宜直接作为错误项；原标记C应改为D。",
+      "referenceSources": [
+        {
+          "title": "Cleveland Clinic：肝性脑病，West-Haven分期",
+          "url": "https://my.clevelandclinic.org/departments/digestive/medical-professionals/hepatology/hepatic-encephalopathy"
+        }
+      ]
     },
     {
       "stem": "下列那项最能提示为出血坏死型胰腺炎",
@@ -28454,8 +29245,25 @@
         "lineEnd": 1742,
         "raw": "385、下列那项最能提示为出血坏死型胰腺炎\nA．休克\nB．黄疸\nC．上腹压痛及反跳痛\nD．高热\nE．两侧腹部出现皮下出血/////"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "E"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "E．两侧腹部出现皮下出血（Grey Turner征）。",
+      "referenceRationale": "教材将腰部皮肤青紫与脐周青紫分别描述为Grey Turner征、Cullen征，反映皮下出血；在给定选项中更提示出血坏死性病变。黄疸可由胆道梗阻或胰头肿胀压迫引起，特异性不足。同类第173题也应按皮下出血理解。该体征用于提示，不能单独代替影像学诊断。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学》第2版删减版，第61章",
+          "pdfPages": [
+            313
+          ]
+        }
+      ]
     },
     {
       "stem": "男，40岁，误服氢氧化钾，出现咽喉及胸骨后烧灼感，上腹剧痛，恶心呕吐，以下那项处理是错误的",
@@ -28626,8 +29434,21 @@
         "lineEnd": 1760,
         "raw": "388、男，３２岁，上腹痛４年，多出现于餐后３小时，进食后可缓解伴返酸，近半个月反复呕吐，呕吐为隔宿食，其最可能的诊断是\nＡ.胃癌\nＢ.胃溃疡伴幽门梗阻\nＣ.十二指肠溃疡活动期\nＤ十二指肠溃疡伴活动期/////\nＥ复合性溃疡"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "医学参考诊断：十二指肠溃疡并幽门梗阻；原选项中没有完整对应项，暂不指定字母。",
+      "referenceRationale": "餐后约3小时疼痛、进食缓解支持十二指肠溃疡；反复呕吐隔宿食提示胃排空受阻。D写成“十二指肠溃疡伴活动期”，疑有缺漏，不能直接当作“并幽门梗阻”。若以后核实D原本为“十二指肠溃疡并幽门梗阻”，才可选D；B的病变部位与典型疼痛节律不符。",
+      "referenceSources": [
+        {
+          "title": "Merck专业版：消化性溃疡病，症状及胃出口梗阻",
+          "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/gastritis-and-peptic-ulcer-disease/peptic-ulcer-disease"
+        }
+      ]
     },
     {
       "stem": "一急性胰腺炎患者出现手足搐搦，给予静脉注射１０％葡萄糖酸钙后仍未能控制，查血钙１０mg／dl，应考虑存在下列哪一种情况",
@@ -28969,8 +29790,23 @@
         "lineEnd": 1796,
         "raw": "394、猩红热患儿皮疹特点，以下哪项不符合\nＡ皮疹粗糙，砂纸样/////\nＢ常有散在糠屑样脱皮\nＣ在腋窝，腹股沟等皮肤皱褶处皮疹稀疏\nＤ常在24小时内遍及全身\nＥ皮疹间皮肤呈红色"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "C．皮肤皱褶处皮疹稀疏。",
+      "referenceRationale": "猩红热皮疹呈砂纸样，皮肤皱褶处通常更明显，可形成帕氏线，而不是稀疏。因此原标记A不对，A描述的是典型皮疹特点。",
+      "referenceSources": [
+        {
+          "title": "CDC：猩红热临床指导，皮疹特征",
+          "url": "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/scarlet-fever.html"
+        }
+      ]
     },
     {
       "stem": "为了急时治疗急性中毒，下列哪项可作为中毒诊断的主要依据",
@@ -29084,8 +29920,25 @@
         "lineEnd": 1808,
         "raw": "396、下列哪种物质具有缺氧和抑制酶的活力双重中毒机制\nＡ.硫化氢\nＢ.汽油\nＣ.氢化物//////\nＤ.棉酚\nＥ.砒霜"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "ambiguous",
+      "referenceAnswerText": "原题不能可靠单选。若C原意为“氰化物”，其抑制细胞色素氧化酶并导致组织缺氧的机制成立；A硫化氢也具备这一机制。",
+      "referenceRationale": "“氢化物”是宽泛化学类别，不能直接替换为“氰化物”后判分。即使补成氰化物，硫化氢也可抑制细胞色素氧化酶、阻碍细胞利用氧，所以题干“缺氧和抑制酶的活力”仍不能唯一排除A。可记住两者均可导致细胞氧利用障碍，保留原题待核对。",
+      "referenceSources": [
+        {
+          "title": "CDC/ATSDR：氰化氢的细胞缺氧机制",
+          "url": "https://wwwn.cdc.gov/tsp/mmg/mmgdetails.aspx?mmgid=1141&toxid=249"
+        },
+        {
+          "title": "CDC/ATSDR：硫化氢的细胞色素氧化酶抑制作用",
+          "url": "https://wwwn.cdc.gov/TSP/MMG/MMGDetails.aspx?mmgid=385&toxid=67"
+        }
+      ]
     },
     {
       "stem": "中毒伴肾功能不全或昏迷患者不宜使用下列哪种方法",
@@ -29142,8 +29995,27 @@
         "lineEnd": 1814,
         "raw": "397、中毒伴肾功能不全或昏迷患者不宜使用下列哪种方法\nＡ.吸氧\nＢ.硫酸纳导泻\nＣ.硫酸镁导泻\nＤ.输液/////\nＥ.洗胃"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "C．硫酸镁导泻。",
+      "referenceRationale": "此题针对含镁导泻剂的禁忌：肾功能不全时镁排泄减少，容易蓄积并抑制神经肌肉与呼吸功能，昏迷患者尤其不适宜。输液应按容量状态调整，不能笼统视为禁用。另须区分：未保护气道的昏迷患者也不能直接洗胃，E是否可行取决于气道保护及洗胃适应证；现代中毒处置不常规使用导泻剂。",
+      "referenceSources": [
+        {
+          "title": "NIH ODS：镁的毒性与肾功能不全风险",
+          "url": "https://ods.od.nih.gov/factsheets/magnesium-HealthProfessional/"
+        },
+        {
+          "title": "MSD专业版：中毒的一般原则（特异解毒剂与螯合治疗）",
+          "url": "https://www.msdmanuals.com/professional/injuries-poisoning/poisoning/general-principles-of-poisoning"
+        }
+      ]
     },
     {
       "stem": "清除进入人体未吸收的毒物，哪一个不正确",
@@ -29428,8 +30300,23 @@
         "lineEnd": 1844,
         "raw": "402、常用氨羟螯合剂（依地酸钙钠）巯基螯合剂（二硫丙醇，二硫丙磺钠，二巯丁二钠）用于哪项中毒抢救治疗？\n　　A.有机磷农药中毒\nB.氰化物中毒\nC.亚硝酸盐中毒//////\nD.重金属中毒\nE.急性一氧化碳中毒"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D．重金属中毒。",
+      "referenceRationale": "依地酸钙钠、二巯丙醇等属于螯合剂，用于相应金属中毒；具体药物须按金属种类选择，不能互相通用。亚硝酸盐的典型毒性为高铁血红蛋白血症，其解毒思路不是使用这些金属螯合剂。原标记C应改为D。",
+      "referenceSources": [
+        {
+          "title": "MSD专业版：中毒的一般原则（特异解毒剂与螯合治疗）",
+          "url": "https://www.msdmanuals.com/professional/injuries-poisoning/poisoning/general-principles-of-poisoning"
+        }
+      ]
     },
     {
       "stem": "有机磷杀虫药中毒，在人体分布最多的器官为",
@@ -29999,8 +30886,31 @@
         "lineEnd": 1904,
         "raw": "412、下列哪种中毒不会引起中毒性溶血？\nA.苯胺\nB.砷化氢\nC.毒蕈\nD.亚硝酸盐///////\nE.砷化氢"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "versioned",
+      "referenceAnswerText": "按传统“主要毒理表现”分类，参考选D．亚硝酸盐；原题“不会”不宜理解为绝对不可能。",
+      "referenceRationale": "亚硝酸盐最典型的是高铁血红蛋白血症；砷化氢则以急性血管内溶血为主要毒性。原题B与E重复，不影响识别其考点，但“不会”过于绝对，氧化性损伤及相关处置过程中仍需监测溶血，故仅作传统题意参考，不据此强制判分。",
+      "referenceSources": [
+        {
+          "title": "CDC/ATSDR：硝酸盐与亚硝酸盐的血液毒性",
+          "url": "https://archive.cdc.gov/www_atsdr_cdc_gov/csem/nitrate-nitrite/health_effects.html"
+        },
+        {
+          "title": "CDC/ATSDR：砷化氢中毒医学处置资料（毒理机制）",
+          "url": "https://wwwn.cdc.gov/TSP/MMG/MMGDetails.aspx?mmgid=1199&toxid=278"
+        },
+        {
+          "title": "CDC/ATSDR：亚硝酸盐中毒的治疗监测（包括可能溶血）",
+          "url": "https://archive.cdc.gov/www_atsdr_cdc_gov/csem/nitrate-nitrite/patients_exposed.html"
+        }
+      ]
     },
     {
       "stem": "下列哪种中毒不会引起血液凝固？",
@@ -30057,8 +30967,25 @@
         "lineEnd": 1910,
         "raw": "413、下列哪种中毒不会引起血液凝固？\nA.水杨酸类\nB.肝素\nC.敌鼠\nD蛇毒\nE.砷化氢//////"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [],
+      "referenceType": "single",
+      "referenceStatus": "incomplete",
+      "referenceAnswerText": "原题缺少可靠的单选答案。若原意为“哪种中毒不以凝血障碍为主要表现”，拟答E．砷化氢；不能把这一补全假设当成原题事实。",
+      "referenceRationale": "原文只写“不会引起血液凝固”，与“不会引起凝血障碍”含义不同。水杨酸类、肝素及抗凝血类鼠药可导致出血或凝血异常，蛇毒作用也因毒种不同。砷化氢主要引起溶血，但严重中毒也可出现凝血异常，因此即使补“障碍”也不宜作绝对判断；先记主要机制，再核实原题。",
+      "referenceSources": [
+        {
+          "title": "CDC/ATSDR：砷化氢中毒医学处置资料（毒理机制）",
+          "url": "https://wwwn.cdc.gov/TSP/MMG/MMGDetails.aspx?mmgid=1199&toxid=278"
+        },
+        {
+          "title": "Coagulopathy and bleeding associated with salicylate toxicity（临床毒理研究）",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30900477/"
+        }
+      ]
     },
     {
       "stem": "女，25岁，服敌敌畏昏迷2小时。查体：大汗，双瞳孔针尖样大小，双肺布满湿啰音，心率79次/分，律齐，无杂音。患者最佳的抢救原则是",
@@ -31198,8 +32125,29 @@
         "lineEnd": 2023,
         "raw": "433、频发性室性期前收缩的定义是\nA.室性期前收缩﹥5/h\nB.室性期前收缩﹥10/h \nC.室性期前收缩﹥30/h\nD.室性期前收缩﹥60/h\nE..室性期前收缩﹥100/h/////"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "versioned",
+      "referenceAnswerText": "若采用按小时记录的常见频率定义，参考选C．＞30次/小时；教材相关段落另用＞5次/分。",
+      "referenceRationale": "本题各选项都以“每小时”为单位，C符合常见动态心电图频率口径。用户教材第43章在围术期处理段落中写“频发室性期前收缩（＞5个/分）”，并非＞5次/小时，两种口径不能机械换算为同一个阈值。题干未说明采用哪种定义，保留版本提示；原标记E＞100次/小时不是这里可直接确认的标准界值。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学》第2版删减版，第43章",
+          "pdfPages": [
+            130
+          ]
+        },
+        {
+          "title": "StatPearls：Premature Ventricular Complex，频率定义",
+          "url": "https://www.ncbi.nlm.nih.gov/sites/books/NBK547713/"
+        }
+      ]
     },
     {
       "stem": "室性期前收缩三联律是指",
@@ -31598,8 +32546,25 @@
         "lineEnd": 2065,
         "raw": "440、缺少下列哪项就不能诊断恶性高血压\nA.DBP﹥12.9Kpa(130mmHg)/////\nB.中度高血压可急剧发展为恶性高血压\nC.重度高血压可急剧发展为恶性高血压\nD.眼底可出血渗出和乳头水肿\nE.眼底无乳头水肿"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D．眼底出血、渗出及视盘（乳头）水肿。",
+      "referenceRationale": "按本教材的恶性高血压定义，严重血压升高伴视网膜血管损害是关键；单一舒张压界值不是必须条件。A还存在单位错误：130mmHg约为17.3kPa，12.9kPa约为97mmHg。应记住眼底和其他急性靶器官损害，而不能仅凭原答案A诊断。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学》第2版删减版，第42章",
+          "pdfPages": [
+            119
+          ]
+        }
+      ]
     },
     {
       "stem": "变异型心绞痛的主要特点是",
@@ -32620,8 +33585,23 @@
         "lineEnd": 2165,
         "raw": "458、下列心脏病很少引起肺淤血的是\nA.高血压性心脏病B.肺源性心脏病C.风湿性心脏病二尖瓣狭窄D.梅毒性心脏病/////E.冠心病"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "B"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "B．肺源性心脏病。",
+      "referenceRationale": "单纯肺源性心脏病主要因肺循环阻力升高造成右心负荷增加，右心衰竭以体循环静脉淤血为主。肺静脉淤血更直接与左心衰竭或二尖瓣狭窄有关，因此本题应选B。肺源性心脏病合并左心病变时仍可能出现肺淤血。",
+      "referenceSources": [
+        {
+          "title": "Merck专业版：右心衰竭和肺源性心脏病",
+          "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/heart-failure/right-heart-failure-and-cor-pulmonale"
+        }
+      ]
     },
     {
       "stem": "冠状动脉粥样硬化最常见累及的冠状动脉分支是",
@@ -32654,7 +33634,7 @@
       ],
       "answers": [],
       "rawAnswers": [],
-      "type": "unknown",
+      "type": "single",
       "answerStatus": "review",
       "answerNote": "原文件答案待核对，暂不判分。原选项为 A、C、D、E、E，缺 B 且 E 重复，末项仅有感叹号，缺少可可靠对应的标准答案标记。",
       "rationale": "",
@@ -32679,8 +33659,23 @@
         "lineEnd": 2167,
         "raw": "459、冠状动脉粥样硬化最常见累及的冠状动脉分支是\nA.旋支动C.左主干动脉D.右主赶动脉E.右旋支动脉E左冠状动脉前降支！！"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "unknown",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "E"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "E．左冠状动脉前降支（按网页规范后的选项编号）。",
+      "referenceRationale": "左前降支是冠状动脉粥样硬化常见、最常受累的分支。原文件缺B且两个选项都写E，应按完整选项文字识别答案；网页顺序规范后，最后一项仍为E，原文编号问题保留在来源中。",
+      "referenceSources": [
+        {
+          "title": "MESA研究：新检出冠状动脉钙化的分布与负荷（左前降支最常见）",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/26088381/"
+        }
+      ]
     },
     {
       "stem": "某患者，心悸气短，有风湿病史，近半年症状加重，查体左心界扩大，心率120次/分，胸骨左缘2～3肋间可闻及舒张期杂音，脉为水冲脉，本患者的疾病最大可能是",
@@ -32965,8 +33960,29 @@
         "lineEnd": 2179,
         "raw": "464、大脑中动脉皮层支闭塞后引起的对侧偏瘫有什么特点\nA.不伴有颅神经瘫痪B.偏瘫以下肢为重C.为均等性轻偏瘫D.偏瘫以下肢为轻E.上下肢均为0级瘫/////"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "D"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "D．偏瘫以下肢为轻（面部、上肢较重）。",
+      "referenceRationale": "大脑中动脉皮质支主要供应大脑半球外侧面，面部及上肢运动区受影响较明显；下肢运动区偏内侧，主要由大脑前动脉供血。因此对侧偏瘫一般上肢重于下肢，不能一概说上下肢均为0级瘫。",
+      "referenceSources": [
+        {
+          "title": "《实用重症医学》第2版删减版，第68章",
+          "pdfPages": [
+            375
+          ]
+        },
+        {
+          "title": "Merck专业版：典型卒中综合征（大脑中动脉）",
+          "url": "https://www.merckmanuals.com/en-ca/professional/multimedia/table/selected-stroke-syndromes"
+        }
+      ]
     },
     {
       "stem": "30岁男性，劳动中突然剧烈头痛、呕吐，一度意识不清，醒后颈枕部痛，右侧眼睑下垂，右瞳孔大、颈强，克氏征阳性。最可能的诊断是",
@@ -33139,8 +34155,23 @@
         "lineEnd": 2184,
         "raw": "467、高渗性缺水，其体液变化之最终表现D                                    A.细胞外液缺水\nB.细胞内液缺水C.细胞内液缺水超过细胞外液缺水/////D.细胞内外液等量缺水E.细胞外液缺水超过细胞内液缺水"
       },
-      "note": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
-      "reviewed": true
+      "note": "参考答案与核对说明为新增内容；原题和原文件标记保留供对照。",
+      "reviewed": true,
+      "originalType": "single",
+      "originalNote": "原文件包含旧版急救标准；按原文件答案练习，不能据此替代现行临床规范。",
+      "referenceAnswers": [
+        "C"
+      ],
+      "referenceType": "single",
+      "referenceStatus": "confirmed",
+      "referenceAnswerText": "C．细胞内液缺水超过细胞外液缺水。",
+      "referenceRationale": "按高渗性缺水的基础生理模型，失水多于失钠使细胞外液渗透压升高，水从细胞内移向细胞外，暂时维持细胞外容量，细胞内脱水较突出；并不是细胞内外等量缺水。因此原文C后的标记较符合题意，题干末尾D应纠正。此题说的是失水为主的高渗性缺水，不泛指所有病因的高钠血症。",
+      "referenceSources": [
+        {
+          "title": "Merck专业版：高钠血症，水分亏缺与细胞脱水",
+          "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hypernatremia"
+        }
+      ]
     },
     {
       "stem": "等渗性缺水短期内出现血容量明显不足时，提示体液丧失超过体重的",

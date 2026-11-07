@@ -1,13 +1,13 @@
-import {canGrade, gradeQuestion, sanitizeHistory, filterQuestions, summary, shuffle} from './core.js?v=2';
+import {answerKeys, canGrade, gradeQuestion, sanitizeHistory, filterQuestions, summary, shuffle} from './core.js?v=3';
 const $ = s => document.querySelector(s);
 const KEY = 'icu.study.v1';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const bankInfo = {mock:{title:'原创模拟题',short:'模拟题',description:'依据《实用重症医学》第2版指定删减范围 · 60 章'},past:{title:'历年真题（用户提供）',short:'历年真题',description:'来源：《危急重症题.doc》 · 按原文件顺序分组'}};
 let banks={}, bank='mock', data, byId, history={}, unavailableHistory={}, pool=[], index=0, view='practice', mode='sequence', bankStates={};
-let filters={module:'all',chapter:'all',type:'all',unanswered:false};
+let filters={module:'all',chapter:'all',type:'all',unanswered:false,referenceOnly:false};
 let selected=new Set(), submitted=false, toastTimer, restored=null, canSave=true;
 const isPast = () => bank==='past';
-const emptyFilters = () => ({module:'all',chapter:'all',type:'all',unanswered:false});
+const emptyFilters = () => ({module:'all',chapter:'all',type:'all',unanswered:false,referenceOnly:false});
 function toast(message){$('#toast').textContent=message;$('#toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').hidden=true,2600);}
 function snapshot(){return {filters:{...filters},mode,queue:pool.map(q=>q.id),current:pool[index]?.id,view};}
 function save(){
@@ -19,28 +19,28 @@ function stats(){
   const s=summary(data.questions,history);
   $('#stat-done').textContent=s.done;$('#stat-total').textContent=s.total;
   $('#stat-rate').textContent=s.rate===null?'—':s.rate+'%';
-  $('#rate-caption').textContent=isPast()?'原答案一致率（可判分题）':'最近作答正确率';
+  $('#rate-caption').textContent=isPast()?'答案一致率（可判分题）':'最近作答正确率';
   $('#stat-wrong').textContent=s.wrong;$('#wrong-nav').textContent=s.wrong;
   $('#overall-fill').style.width=(s.total?s.done/s.total*100:0)+'%';
   $('#ungraded-stats').hidden=!(s.ungraded>0);
-  $('#ungraded-stats').textContent='另有 '+(s.ungraded||0)+' 题已查看，因原答案待核对而不计分。';
+  $('#ungraded-stats').textContent='另有 '+(s.ungraded||0)+' 题已查看；因条件不全或版本差异，不计分。';
 }
 function renderBankControls(){
   $('#bank-list').innerHTML=Object.entries(bankInfo).map(([id,info])=>`<button class="bank-button ${id===bank?'active':''}" data-bank="${id}" aria-pressed="${id===bank}" ${banks[id]?'':'disabled'}><span>${esc(info.title)}</span><strong>${banks[id]?banks[id].questions.length+' 题':'暂未加载'}</strong></button>`).join('');
   document.querySelectorAll('[data-bank]').forEach(b=>b.addEventListener('click',()=>setBank(b.dataset.bank)));
-  $('#bank-description').textContent=bankInfo[bank].description;
-  $('#bank-era-note').hidden=!isPast();
+  $('#bank-description').textContent=bankInfo[bank].description+(isPast()&&data.questions.some(q=>q.referenceStatus)?' · 已为 '+data.questions.filter(q=>q.referenceStatus).length+' 道疑义题补充参考答案与依据':'');
+  $('#bank-era-note').hidden=!isPast();$('#reference-only-label').hidden=!isPast();
   $('#side-scope-hint').textContent=isPast()?'按原题顺序':'按章节巩固';
   $('#scope-filter-label').textContent=isPast()?'题目分组':'章节';
   $('#progress-bank-title').textContent=bankInfo[bank].title+' · 学习进度';
-  $('#progress-description').textContent=isPast()?'按原文件答案记录最近一次提交；待核对题只记录已看，不纳入一致率和错题。':'统计每题最近一次提交。答错的知识点，值得再看一眼。';
+  $('#progress-description').textContent=isPast()?'按各题标注的原答案或参考答案记录最近一次提交；有歧义或条件不全的题不计分。':'统计每题最近一次提交。答错的知识点，值得再看一眼。';
   $('#reset-progress').textContent='清空本题库记录';
   $('#type-filter').innerHTML='<option value="all">全部题型</option><option value="single">单选题</option><option value="multiple">多选题</option>'+(data.questions.some(q=>q.type==='unknown')?'<option value="unknown">待核对题型</option>':'');
   renderNotes();
 }
 function restoreSession(state={}){
   const f=state.filters||{};
-  filters={module:data.modules.some(m=>m.id===f.module)?f.module:'all',chapter:data.chapters.some(c=>String(c.chapter)===String(f.chapter))?String(f.chapter):'all',type:['single','multiple','unknown'].includes(f.type)?f.type:'all',unanswered:!!f.unanswered};
+  filters={module:data.modules.some(m=>m.id===f.module)?f.module:'all',chapter:data.chapters.some(c=>String(c.chapter)===String(f.chapter))?String(f.chapter):'all',type:['single','multiple','unknown'].includes(f.type)?f.type:'all',unanswered:!!f.unanswered,referenceOnly:isPast()&&!!f.referenceOnly};
   view=['wrong','progress'].includes(state.view)?state.view:'practice';
   if(view==='wrong')filters.unanswered=false;
   mode=state.mode==='random'?'random':'sequence';
@@ -73,7 +73,7 @@ function renderChapterOptions(){
   const allLabel=isPast()?'全部题目分组':filters.module==='all'?'全部 '+data.chapters.length+' 章':'本模块全部章节';
   $('#chapter-filter').innerHTML='<option value="all">'+allLabel+'</option>'+chapters.map(c=>`<option value="${c.chapter}">${isPast()?'':'第'+c.chapter+'章 · '}${esc(c.title)}</option>`).join('');
   $('#chapter-filter').value=filters.chapter;$('#type-filter').value=filters.type;
-  $('#unanswered-only').checked=filters.unanswered;$('#unanswered-only').disabled=view==='wrong';
+  $('#reference-only').checked=!!filters.referenceOnly;$('#unanswered-only').checked=filters.unanswered;$('#unanswered-only').disabled=view==='wrong';
 }
 function rebuild(restoreId=null){
   const available=filterQuestions(data.questions,history,filters,view);
@@ -95,7 +95,7 @@ function renderQuestion(){
   stats();const q=pool[index];
   const chapter=data.chapters.find(c=>String(c.chapter)===filters.chapter);
   const scope=filters.chapter==='all'?(activeModule()?.title||'全部范围'):(isPast()?chapter?.title||'所选分组':'第'+filters.chapter+'章');
-  $('#session-label').textContent=bankInfo[bank].short+' · '+(view==='wrong'?'错题复习':mode==='random'?'随机练习 · '+pool.length+'题':'顺序练习')+' · '+scope+(filters.unanswered?' · 本轮未做题':'');
+  $('#session-label').textContent=bankInfo[bank].short+' · '+(view==='wrong'?'错题复习':mode==='random'?'随机练习 · '+pool.length+'题':'顺序练习')+' · '+scope+(filters.unanswered?' · 本轮未做题':'')+(filters.referenceOnly?' · 补充参考答案':'');
   $('#sequence-button').hidden=mode!=='random';
   $('#question-card').hidden=!q;$('#empty-state').hidden=!!q;$('#question-nav').hidden=!q;
   if(!q){$('#empty-title').textContent=view==='wrong'?'这个范围没有待复习错题':filters.unanswered?'这个范围已经练完了':'当前筛选没有题目';$('#empty-message').textContent=view==='wrong'?'待核对题不进入错题；已计分的错题再次答对后自动移出。':'调整分组或题型，继续下一组练习。';return;}
@@ -103,17 +103,17 @@ function renderQuestion(){
   const noOptions=!q.options?.length, unknown=q.type==='unknown';
   const typeLabel=q.type==='single'?'单选题':q.type==='multiple'?'多选题':'题型待核对';
   const sourceLabel=isPast()?`${esc(q.source?.section||'原文件')} · 原题号 ${esc(q.source?.number??'—')} · 收录序号 ${esc(q.source?.ordinal??'—')}`:`第 ${q.chapter} 章 · ${esc(q.chapterTitle)}`;
-  const instruction=noOptions?'这道题的选项格式不完整，可查看原题；暂不计分。':unknown?'题型或原答案待核对，可选择后查看原题；暂不计分。':q.type==='single'?'请选择一个答案，点击后查看反馈。':'可选择多个答案，选完后提交；可判分题须全部选对。';
-  $('#question-card').innerHTML=`<div class="question-meta"><div class="question-tags"><span class="pill bank-pill">${bankInfo[bank].short}</span><span class="pill ${q.type==='multiple'?'multiple':''}">${typeLabel}</span>${!canGrade(q)?'<span class="pill review-pill">待核对 · 不计分</span>':`<span class="difficulty">${esc(q.difficulty)}</span>`}</div><span class="question-id">${esc(q.id.toUpperCase())}</span></div><div class="chapter-name">${sourceLabel}</div><h2 id="question-title">${esc(q.stem||'原题格式待核对，请查看来源内容')}</h2><p class="instruction">${instruction}</p><div class="options" role="group" aria-label="答案选项"></div><div class="submit-row" id="submit-row" ${q.type==='single'&&!noOptions?'hidden':''}><small id="selection-count"></small><button class="primary-button" id="submit-answer">${noOptions?'查看原题':canGrade(q)?'提交答案':'查看原题与标记'}</button></div><div id="feedback-slot"></div>`;
+  const instruction=noOptions?'这道题的选项格式不完整，可查看原题与参考说明；暂不计分。':unknown?'题型或选项存在疑义，可选择后查看参考说明；暂不计分。':q.type==='single'?'请选择一个答案，点击后查看反馈。':'可选择多个答案，选完后提交；可判分题须全部选对。';
+  $('#question-card').innerHTML=`<div class="question-meta"><div class="question-tags"><span class="pill bank-pill">${bankInfo[bank].short}</span><span class="pill ${q.type==='multiple'?'multiple':''}">${typeLabel}</span>${q.referenceStatus?'<span class="pill reference-pill">已补参考答案</span>':''}${!canGrade(q)?'<span class="pill review-pill">条件待核对 · 不计分</span>':`<span class="difficulty">${esc(q.difficulty)}</span>`}</div><span class="question-id">${esc(q.id.toUpperCase())}</span></div><div class="chapter-name">${sourceLabel}</div><h2 id="question-title">${esc(q.stem||'原题格式待核对，请查看来源内容')}</h2><p class="instruction">${instruction}</p><div class="options" role="group" aria-label="答案选项"></div><div class="submit-row" id="submit-row" ${q.type==='single'&&!noOptions?'hidden':''}><small id="selection-count"></small><button class="primary-button" id="submit-answer">${noOptions?'查看原题':canGrade(q)?'提交答案':'查看原题与标记'}</button></div><div id="feedback-slot"></div>`;
   $('#submit-answer').addEventListener('click',submit);paintOptions();if(submitted)showFeedback(false);
   $('#position-label').textContent=(index+1)+' / '+pool.length;$('#prev-button').disabled=index===0;$('#next-button').textContent=index===pool.length-1?'查看进度 →':'下一题 →';
 }
 function paintOptions(){
-  const q=pool[index],gradable=canGrade(q);
+  const q=pool[index],gradable=canGrade(q), answerLabel=q.referenceStatus?'参考答案':'原答案';
   $('.options').innerHTML=(q.options||[]).map(o=>{
-    const chosen=selected.has(o.key),correct=submitted&&gradable&&q.answers.includes(o.key),wrong=submitted&&gradable&&chosen&&!correct;
-    let status=correct?(isPast()?(chosen?'原答案':'原答案 · 未选'):(chosen?'正确':'正确 · 漏选')):(wrong?(isPast()?'与原答案不同':'选错'):'');
-    if(q.type==='single'&&correct&&!chosen)status=isPast()?'原文件答案':'正确答案';
+    const chosen=selected.has(o.key),correct=submitted&&gradable&&answerKeys(q).includes(o.key),wrong=submitted&&gradable&&chosen&&!correct;
+    let status=correct?(isPast()?(chosen?answerLabel:answerLabel+' · 未选'):(chosen?'正确':'正确 · 漏选')):(wrong?(isPast()?'与'+answerLabel+'不同':'选错'):'');
+    if(q.type==='single'&&correct&&!chosen)status=isPast()?answerLabel:'正确答案';
     return `<button class="option ${q.type} ${chosen?'selected':''} ${correct?'correct':''} ${wrong?'wrong':''}" data-option="${esc(o.key)}" aria-pressed="${chosen}" ${submitted?'disabled':''}><span class="option-letter">${esc(o.key)}</span><span class="option-text">${esc(o.text)}</span>${status?`<span class="option-state">${status}</span>`:''}</button>`;
   }).join('');
   document.querySelectorAll('[data-option]').forEach(b=>b.addEventListener('click',()=>{if(submitted)return;const key=b.dataset.option;if(q.type==='single'){selected=new Set([key]);submit();}else{selected.has(key)?selected.delete(key):selected.add(key);paintOptions();}}));
@@ -129,13 +129,22 @@ function submit(){
 function sourceMarkup(sources=[]){
   const seen=new Set();return sources.map(s=>{if(s.tableText){const key=s.page+':'+s.tableText;if(seen.has(key))return '';seen.add(key);return `<blockquote><span class="source-page">删减版 PDF · 第 ${s.page} 页 · 原表/公式整理</span><p>${esc(s.tableText)}</p></blockquote>`;}return `<blockquote><span class="source-page">删减版 PDF · 第 ${s.page} 页</span><p>“${esc(s.quote)}”</p></blockquote>`;}).join('');
 }
+function referenceSourcesMarkup(sources=[]){
+  return sources.map(s=>{
+    const title=esc(s.title||'参考依据');
+    const url=typeof s.url==='string'&&/^https?:\/\//.test(s.url)?s.url:null;
+    const pages=Array.isArray(s.pdfPages)?s.pdfPages.join('、'):s.pdfPages;
+    return `<li>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${title}</a>`:title}${pages?` · 删减版 PDF 第 ${esc(pages)} 页`:''}${s.excerpt?`<p>${esc(s.excerpt)}</p>`:''}</li>`;
+  }).join('');
+}
 function pastFeedback(q,correct){
-  const ungraded=correct===null;
-  const title=ungraded?'原答案待核对，暂不计分':correct?'与原文件答案一致':'与原文件答案不一致';
+  const ungraded=correct===null, hasReference=!!q.referenceStatus;
+  const title=ungraded?(hasReference?'参考答案已补充，本题暂不计分':'原答案待核对，暂不计分'):hasReference?(correct?'与参考答案一致':'与参考答案不一致'):(correct?'与原文件答案一致':'与原文件答案不一致');
   const answerText=(q.rawAnswers?.length?q.rawAnswers:q.answers||[]).join('、')||'未提供明确答案';
-  const detail=ungraded?(q.answerNote||'保留原题供核对，不纳入一致率和错题统计。'):'本题按上传文件的答案标记反馈，未据此核定现行临床标准。';
+  const detail=hasReference?(ungraded?'原题存在条件缺失、选项歧义或版本差异，请阅读下方参考结论。':'本题按下方参考答案判分，原文件标记保留供对照。'):ungraded?(q.answerNote||'保留原题供核对，不纳入一致率和错题统计。'):'本题按上传文件的答案标记反馈，未据此核定现行临床标准。';
   const raw=q.source?.raw||'';
-  return `<section class="feedback" aria-label="作答反馈与原题来源"><div class="result-banner ${ungraded?'neutral':correct?'':'incorrect'}" role="status"><span class="result-symbol" aria-hidden="true">${ungraded?'?':correct?'✓':'×'}</span><div><strong>${title}</strong><small>${esc(detail)}</small></div></div><p class="answer-line">你的选择 <b>${[...selected].sort().join('、')||'已查看原题'}</b><br>${ungraded?'原文件标记（待核对）':'原文件答案'} <b>${esc(answerText)}</b></p>${!ungraded&&q.answerNote?`<div class="version-note">${esc(q.answerNote)}</div>`:''}<h3 class="explanation-heading">原文件解析</h3><p class="rationale">${esc(q.rationale||'原文件未附独立解析。请结合教材核对，不将原答案标记直接视为现行临床结论。')}</p>${q.knowledge?`<div class="knowledge-box"><strong>原文件知识点</strong><p>${esc(q.knowledge)}</p></div>`:''}<details class="original-source"><summary>查看原题及答案标记</summary><p class="source-page">${esc(q.source?.document||'危急重症题.doc')} · ${esc(q.source?.section||'原文件')} · 原题号 ${esc(q.source?.number??'—')} · 收录序号 ${esc(q.source?.ordinal??'—')}</p><pre>${esc(raw||'原题内容未能提取')}</pre></details>${q.note?`<div class="version-note"><b>原题提示</b> · ${esc(q.note)}</div>`:''}<div class="feedback-actions"><button class="quiet-button" id="retry-question">↻ 遮住反馈，再练一次</button></div></section>`;
+  const reference=hasReference?`<div class="knowledge-box reference-answer"><strong>补充参考答案${!ungraded?' · '+esc(answerKeys(q).join('、')):''}</strong><p>${esc(q.referenceAnswerText)}</p></div><h3 class="explanation-heading">核对说明</h3><p class="rationale">${esc(q.referenceRationale)}</p>${q.referenceSources?.length?`<h3 class="explanation-heading">参考依据</h3><ul class="reference-sources">${referenceSourcesMarkup(q.referenceSources)}</ul>`:''}`:`<h3 class="explanation-heading">原文件解析</h3><p class="rationale">${esc(q.rationale||'原文件未附独立解析。请结合教材核对，不将原答案标记直接视为现行临床结论。')}</p>${q.knowledge?`<div class="knowledge-box"><strong>原文件知识点</strong><p>${esc(q.knowledge)}</p></div>`:''}`;
+  return `<section class="feedback" aria-label="作答反馈与原题来源"><div class="result-banner ${ungraded?'neutral':correct?'':'incorrect'}" role="status"><span class="result-symbol" aria-hidden="true">${ungraded?'?':correct?'✓':'×'}</span><div><strong>${title}</strong><small>${esc(detail)}</small></div></div><p class="answer-line">你的选择 <b>${[...selected].sort().join('、')||'已查看原题'}</b><br>${hasReference?'原文件标记（供对照）':ungraded?'原文件标记（待核对）':'原文件答案'} <b>${esc(answerText)}</b></p>${reference}${!hasReference&&!ungraded&&q.answerNote?`<div class="version-note">${esc(q.answerNote)}</div>`:''}<details class="original-source"><summary>查看原题及答案标记</summary><p class="source-page">${esc(q.source?.document||'危急重症题.doc')} · ${esc(q.source?.section||'原文件')} · 原题号 ${esc(q.source?.number??'—')} · 收录序号 ${esc(q.source?.ordinal??'—')}</p><pre>${esc(raw||'原题内容未能提取')}</pre></details>${q.note?`<div class="version-note"><b>原题提示</b> · ${esc(q.note)}</div>`:''}<div class="feedback-actions"><button class="quiet-button" id="retry-question">↻ 遮住反馈，再练一次</button></div></section>`;
 }
 function showFeedback(announce){
   const q=pool[index],correct=gradeQuestion([...selected],q);
@@ -150,7 +159,7 @@ function showFeedback(announce){
 }
 function navigate(delta){if(delta>0&&index===pool.length-1){setView('progress');$('#main').scrollIntoView({behavior:'smooth'});return;}index=Math.min(pool.length-1,Math.max(0,index+delta));renderQuestion();save();$('#question-card').scrollIntoView({behavior:'smooth',block:'start'});}
 function renderProgress(){
-  stats();$('#progress-grid').innerHTML=data.modules.map(m=>{const s=summary(data.questions.filter(q=>q.module===m.id),history);return `<article class="progress-card"><div class="progress-card-head"><h3>${esc(m.title)}</h3><span>${s.done} / ${s.total} 题</span></div><div class="progress-track" aria-hidden="true"><i style="width:${s.total?s.done/s.total*100:0}%"></i></div><div class="progress-card-foot"><span>${isPast()?'与原答案一致':'最近答对'} ${s.correct} 题 · 待复习 ${s.wrong} 题${s.ungraded?' · 已看待核对 '+s.ungraded+' 题':''}</span><button class="quiet-button" data-practice-module="${esc(m.id)}">去练习 →</button></div></article>`;}).join('');
+  stats();$('#progress-grid').innerHTML=data.modules.map(m=>{const s=summary(data.questions.filter(q=>q.module===m.id),history);return `<article class="progress-card"><div class="progress-card-head"><h3>${esc(m.title)}</h3><span>${s.done} / ${s.total} 题</span></div><div class="progress-track" aria-hidden="true"><i style="width:${s.total?s.done/s.total*100:0}%"></i></div><div class="progress-card-foot"><span>${isPast()?'与答案一致':'最近答对'} ${s.correct} 题 · 待复习 ${s.wrong} 题${s.ungraded?' · 已看不计分 '+s.ungraded+' 题':''}</span><button class="quiet-button" data-practice-module="${esc(m.id)}">去练习 →</button></div></article>`;}).join('');
   document.querySelectorAll('[data-practice-module]').forEach(b=>b.addEventListener('click',()=>{filters={...emptyFilters(),module:b.dataset.practiceModule};setView('practice');}));
 }
 function renderNotes(){
@@ -163,6 +172,7 @@ function bindings(){
   $('.brand').addEventListener('click',e=>{e.preventDefault();setView('practice');});
   $('#chapter-filter').addEventListener('change',e=>{filters.chapter=e.target.value;mode='sequence';rebuild();});
   $('#type-filter').addEventListener('change',e=>{filters.type=e.target.value;mode='sequence';rebuild();});
+  $('#reference-only').addEventListener('change',e=>{filters.referenceOnly=e.target.checked;mode='sequence';rebuild();});
   $('#unanswered-only').addEventListener('change',e=>{filters.unanswered=e.target.checked;mode='sequence';rebuild();});
   $('#random-button').addEventListener('click',()=>{mode='random';rebuild();if(pool.length)toast('已从'+bankInfo[bank].short+'随机抽取 '+pool.length+' 题');});
   $('#sequence-button').addEventListener('click',()=>{mode='sequence';rebuild();});
@@ -175,7 +185,7 @@ function closeAbout(){const d=$('#about-dialog');if(typeof d.close==='function')
 $('#about-open').addEventListener('click',()=>{const d=$('#about-dialog');if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');});
 $('#about-close').addEventListener('click',closeAbout);$('#about-done').addEventListener('click',closeAbout);
 $('#about-dialog').addEventListener('click',e=>{if(e.target===$('#about-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeAbout();}});
-async function loadBank(file){const response=await fetch(file+'?v=2');if(!response.ok)throw Error(file+' 加载失败');const loaded=await response.json();if(!Array.isArray(loaded.questions)||!loaded.questions.length)throw Error(file+' 尚未准备好');return loaded;}
+async function loadBank(file){const response=await fetch(file+'?v=3');if(!response.ok)throw Error(file+' 加载失败');const loaded=await response.json();if(!Array.isArray(loaded.questions)||!loaded.questions.length)throw Error(file+' 尚未准备好');return loaded;}
 async function init(){
   try{
     const results=await Promise.allSettled([loadBank('questions.json'),loadBank('past-papers.json')]);
