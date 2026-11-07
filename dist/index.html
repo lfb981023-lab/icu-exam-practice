@@ -8,7 +8,13 @@
   <meta name="robots" content="noindex,nofollow">
   <title>重症医学 · 每日练习</title>
   <link rel="icon" href="icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="重症刷题">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <a href="#main" class="skip">跳到题目</a>
@@ -19,6 +25,22 @@
   </div></header>
   <div class="page-shell">
     <section class="intro" aria-labelledby="page-title"><div><div class="eyebrow">实用重症医学 · 第2版 · 指定删减范围</div><h1 id="page-title">把知识点，练成判断力。</h1><p>模拟题巩固教材，历年真题单独练习。每道题都能回看来源。</p></div><div class="book-mark" aria-hidden="true"><svg viewBox="0 0 180 74"><path d="M0 38h34l9-15 13 36 13-53 17 62 12-30h82"/></svg><span id="bank-total-label">模拟题与历年真题 · 分开练习</span></div></section>
+    <section class="install-entry" id="install-entry" aria-label="添加桌面入口">
+      <div class="install-entry-row"><p><strong>从桌面一键开始</strong><span>把题库放到手机主屏幕</span></p><button class="secondary-button" id="install-open" aria-expanded="false" aria-controls="install-help">添加到手机桌面 <span aria-hidden="true">↗</span></button></div>
+      <div id="install-help" class="install-help" hidden>
+        <h2 id="install-help-title">添加桌面图标</h2>
+        <p id="install-context">添加后，点击桌面的“重症刷题”图标即可打开。最后一步需要在手机上确认添加。</p>
+        <p class="install-browser-note" id="install-browser-note" hidden>当前在微信或 QQ 内打开。请复制下面的链接，在苹果 Safari 或安卓系统浏览器中打开后，再添加到桌面。</p>
+        <div id="install-native" hidden><button class="primary-button" id="install-now">安装到手机桌面</button></div>
+        <div class="install-platform" id="install-ios"><h3>苹果 iPhone / iPad</h3><ol><li>用 <strong>Safari</strong> 打开题库链接。</li><li>点浏览器的<strong>分享</strong>按钮（有些布局先点“…”），找到<strong>添加到主屏幕</strong>。</li><li>名称保留“重症刷题”。如出现“作为网页 App 打开”，先开启，再点<strong>添加</strong>。</li></ol></div>
+        <div class="install-platform" id="install-android"><h3>安卓手机</h3><ol><li>用 Chrome 或系统浏览器打开题库链接。</li><li>打开浏览器菜单，选择<strong>添加到主屏幕</strong>或<strong>安装应用</strong>；部分 Chrome 版本先选“安装并创建快捷方式”。</li><li>按手机提示确认添加。不同浏览器的菜单名称可能略有不同。</li></ol></div>
+        <div class="install-copy-row"><label for="install-url">题库链接</label><input id="install-url" type="url" readonly value="https://icu-study-practice-300.onrender.com" aria-label="可复制的题库链接"><button class="quiet-button" id="install-copy">复制链接</button></div>
+        <p id="install-status" class="install-status" role="status" hidden></p>
+        <p class="install-record-note">桌面版可能使用独立的学习记录。原浏览器里的记录不会被删除，但不会自动迁移到桌面版。</p>
+        <button class="quiet-button" id="install-close">收起说明</button>
+      </div>
+    </section>
+    <p id="app-update-note" class="notice" role="status" hidden>新版题库已准备好。结束本次练习后，关闭所有题库页面和桌面窗口，再重新打开即可更新。</p>
     <section class="bank-selector" aria-label="选择题库"><div class="bank-heading"><h2>选择题库</h2><span>进度与错题按题库区分</span></div><div id="bank-list" class="bank-list"></div><p id="bank-description" class="bank-description">正在载入题库…</p><p id="bank-era-note" class="bank-era-note" hidden>历年真题来自你提供的文件，未注明每题考试年份。原文含 2005 版复苏参数及旧版内容；普通题按原文件答案练习，59道疑义题另补参考答案及依据；条件不全或有歧义的题不计分。</p></section>
     <div id="bank-load-warning" class="notice" hidden></div>
     <div id="storage-warning" class="notice" hidden>当前浏览器无法保存学习记录，关闭页面后进度可能丢失。仍可正常练习。</div>
@@ -43,6 +65,7 @@
   </div>
   <dialog id="about-dialog"><div class="dialog-header"><h2>关于这份题库</h2><button class="icon-button" id="about-close" aria-label="关闭说明">×</button></div><h3>两份题库，分开练习</h3><p>原创模拟题共 300 道，覆盖指定教材 60 章，含 180 道单选和 120 道多选。历年真题（用户提供）收录 <span id="about-past-count">—</span> 道原题，来源为《危急重症题.doc》；保留原文件题号及重复编号，不据此确认真实考试年份。</p><h3>怎样练习</h3><p>在页面上方切换题库。范围筛选、随机 20 题、错题和进度均以当前题库为准。单选点击后查看反馈；多选选完后提交。切换题库不会清除另一份题库的记录。</p><h3>来源与原答案</h3><p>模拟题展示解析、知识点及教材短摘录。历年真题保留原文件答案标记；59道原答案缺失或有疑点的题已补充参考答案、核对说明与依据，并明确区别于原文件内容。可明确作答的题按参考答案判分；题干残缺、选项有歧义或存在版本差异的题给出条件性答案，不计入一致率和错题。原文件附加笔记单独保留供查阅。</p><h3>旧版内容</h3><p>历年真题含 2005 版复苏参数和其他旧版表述，部分笔记有疑似笔误或相互矛盾内容。本题库用于教材考试复习，不代替现行临床规范。</p><h3>学习记录</h3><p>免登录使用。记录仅保存在当前浏览器，不会上传，也不会跨设备同步。原有 300 道模拟题的记录继续保留。清空记录只影响当前选中的题库。</p><button id="about-done" class="primary-button full-width">开始练习</button></dialog>
   <div id="toast" class="toast" role="status" hidden></div>
-  <script type="module" src="app.js?v=3"></script>
+  <script type="module" src="app.js?v=4"></script>
+  <script src="install.js?v=1" defer></script>
 </body>
 </html>
