@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#123d45">
+  <meta name="description" content="重症医学300道原创模拟题，覆盖指定教材60章。单选即时反馈、多选提交判分，附教材摘录、解析和错题复习。">
+  <meta name="robots" content="noindex,nofollow">
+  <title>重症医学 · 每日练习</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a href="#main" class="skip">跳到题目</a>
+  <header class="site-header"><div class="header-inner">
+    <a class="brand" href="#practice" aria-label="重症医学每日练习首页"><span class="brand-icon" aria-hidden="true">+</span><span><strong>重症医学</strong><small>每日练习 / ICU STUDY</small></span></a>
+    <nav aria-label="主要导航"><button class="nav-button active" data-view="practice">练习</button><button class="nav-button" data-view="wrong">错题 <span id="wrong-nav">0</span></button><button class="nav-button" data-view="progress">进度</button></nav>
+    <button class="icon-button" id="about-open" aria-label="题库说明">?</button>
+  </div></header>
+  <div class="page-shell">
+    <section class="intro" aria-labelledby="page-title"><div><div class="eyebrow">实用重症医学 · 第2版 · 指定删减范围</div><h1 id="page-title">把知识点，练成判断力。</h1><p>选答案，看解析，回到教材。每天 30 题，10 天练完一轮。</p></div><div class="book-mark" aria-hidden="true"><svg viewBox="0 0 180 74"><path d="M0 38h34l9-15 13 36 13-53 17 62 12-30h82"/></svg><span>300 道原创模拟题 / 60 章</span></div></section>
+    <div id="storage-warning" class="notice" hidden>当前浏览器无法保存学习记录，关闭页面后进度可能丢失。仍可正常练习。</div>
+    <section class="stats-bar" aria-label="学习统计"><div><span id="stat-done">0</span><small>/ <span id="stat-total">300</span> 题已练</small></div><div><span id="stat-rate">—</span><small>最近作答正确率</small></div><div><span id="stat-wrong">0</span><small>待复习错题</small></div><div class="overall-track" aria-hidden="true"><i id="overall-fill"></i></div></section>
+    <main id="main" tabindex="-1">
+      <div class="study-layout" id="practice-view">
+        <aside class="sidebar" aria-label="选择练习范围"><div class="side-heading"><h2>练习范围</h2><span>按章节巩固</span></div><div id="module-list"></div><div class="side-note"><span>✦</span><p>多选需要<strong>全部选对</strong>才计正确。漏选和多选都进入错题，答对后移出。</p></div></aside>
+        <div class="workspace">
+          <section class="toolbar" aria-label="筛选与顺序"><div class="filter-row"><label>章节<select id="chapter-filter"><option value="all">全部章节</option></select></label><label class="type-label">题型<select id="type-filter"><option value="all">全部题型</option><option value="single">单选题</option><option value="multiple">多选题</option></select></label></div><div class="mode-row"><label class="toggle-label"><input id="unanswered-only" type="checkbox">只练未做</label><div><button class="quiet-button" id="random-button">↻ 随机 20 题</button><button class="quiet-button" id="sequence-button" hidden>恢复顺序</button></div></div><div class="mobile-modules" id="mobile-modules"></div></section>
+          <div id="session-label" class="session-label">顺序练习 · 全部范围</div>
+          <section class="question-card" id="question-card" aria-labelledby="question-title"><div class="loading"><span class="loading-dot"></span>正在载入题库…</div></section>
+          <section class="empty-state" id="empty-state" hidden><div class="empty-symbol">✓</div><h2 id="empty-title">这里暂时没有题目</h2><p id="empty-message"></p><button class="primary-button" id="empty-reset">查看全部题目</button></section>
+          <div class="question-nav" id="question-nav" hidden><button id="prev-button" class="secondary-button">← 上一题</button><span id="position-label"></span><button id="next-button" class="primary-button">下一题 →</button></div>
+          <p class="save-hint" id="save-hint">进度自动保存在当前浏览器 · 重新打开可继续</p>
+        </div>
+      </div>
+      <section id="progress-view" hidden><div class="progress-heading"><div><div class="eyebrow">每次回忆，都是一次巩固</div><h2>你的学习进度</h2><p>统计每题最近一次提交。答错的知识点，值得再看一眼。</p></div><button class="secondary-button" id="reset-progress">清空本机记录</button></div><div id="progress-grid" class="progress-grid"></div><div class="progress-bottom"><p>记录只保存在本机当前浏览器，不会上传，也不会在设备间同步。清理浏览器数据会移除记录。</p><button class="primary-button" id="continue-practice">继续练习 →</button></div></section>
+    </main>
+    <footer>依据《实用重症医学（第2版）》指定删减版 · 原创模拟题，非历年真题<br>来源页码均为 PDF 阅读器页码。版本性考点依题干说明辨认。</footer>
+  </div>
+  <dialog id="about-dialog"><div class="dialog-header"><h2>关于这份题库</h2><button class="icon-button" id="about-close" aria-label="关闭说明">×</button></div><p>300 道原创题覆盖第 28–72、77–85、90–95 章。每章 3 道单选、2 道多选，共 180 道单选、120 道多选。</p><h3>怎样练习</h3><p>单选点击选项即判分；多选勾选后点击“提交答案”。提交后展开解析、必记点和教材原文短摘录。可以按章节训练、随机练习，或集中复习错题。</p><h3>原文与版本</h3><p>摘录来自指定 PDF 的扫描识别文本，标注阅读器页码；部分表格和公式转换为标明“原表/公式整理”的易读文字。疑似识别字形以原 PDF 为准。题库避开已发现的明显误排，涉及旧版定义会单独提示。本题库用于教材考试复习，不代替现行临床规范。</p><h3>学习记录</h3><p>免登录使用。进度仅保存在当前浏览器；同一链接在另一部手机上会开始一份新记录。多选全对才计正确，答对的错题会移出“待复习错题”。</p><button id="about-done" class="primary-button full-width">开始练习</button></dialog>
+  <div id="toast" class="toast" role="status" hidden></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

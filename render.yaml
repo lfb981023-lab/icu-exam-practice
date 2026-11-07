@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: icu-study-practice-300
+    runtime: static
+    buildCommand: node --test tests/core.test.js
+    staticPublishPath: ./dist
