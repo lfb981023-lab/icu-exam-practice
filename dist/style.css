@@ -24,3 +24,7 @@
 /* Three independent banks, with equal, comfortably sized mobile targets. */
 .bank-list{grid-template-columns:repeat(3,minmax(0,1fr))}.bank-button{min-width:0}.module-button>span{min-width:0}.module-button>small{white-space:nowrap}
 @media(max-width:680px){.bank-list{grid-template-columns:1fr}.bank-button{display:flex;align-items:center;min-height:52px;gap:10px}.bank-button>strong{margin-top:0}.bank-button>span{font-size:13px}.chapter-name{overflow-wrap:anywhere}.session-label{overflow-wrap:anywhere}}
+
+/* Update controls remain visible in installed home-screen windows. */
+.app-update{margin:0 0 16px;padding:9px 13px;border:1px solid var(--line);border-radius:9px;background:#fff}.app-update-row{display:flex;align-items:center;justify-content:space-between;gap:12px}.app-update-row>span{font-size:11px;color:var(--muted)}.app-update-row button{min-height:44px;flex:none}.app-update p{font-size:12px;line-height:1.8;margin:3px 0 10px;color:var(--teal)}.app-update>.secondary-button{margin-bottom:4px}
+@media(max-width:400px){.app-update{padding:7px 11px}.app-update-row{gap:6px}.app-update-row>span{font-size:10px}}

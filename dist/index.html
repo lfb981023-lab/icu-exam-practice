@@ -14,7 +14,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="重症刷题">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
   <a href="#main" class="skip">跳到题目</a>
@@ -40,7 +40,11 @@
         <button class="quiet-button" id="install-close">收起说明</button>
       </div>
     </section>
-    <p id="app-update-note" class="notice" role="status" hidden>新版题库已准备好。结束本次练习后，关闭所有题库页面和桌面窗口，等几秒后重新打开即可更新。</p>
+    <section class="app-update" aria-label="题库更新">
+      <div class="app-update-row"><span>当前版本 <span id="app-release">2026.11.11.2</span></span><button id="check-update" class="quiet-button">检查更新</button></div>
+      <p id="update-status" role="status" aria-live="polite" hidden></p>
+      <button id="apply-update" class="secondary-button" hidden>更新并重新打开</button>
+    </section>
     <section class="bank-selector" aria-label="选择题库"><div class="bank-heading"><h2>选择题库</h2><span>进度与错题按题库区分</span></div><div id="bank-list" class="bank-list"></div><p id="bank-description" class="bank-description">正在载入题库…</p><p id="bank-era-note" class="bank-era-note" hidden>历年真题来自你提供的文件，未注明每题考试年份。原文含 2005 版复苏参数及旧版内容；普通题按原文件答案练习，59道疑义题另补参考答案及依据；条件不全或有歧义的题不计分。</p></section>
     <div id="bank-load-warning" class="notice" hidden></div>
     <div id="storage-warning" class="notice" hidden>当前浏览器无法保存学习记录，关闭页面后进度可能丢失。仍可正常练习。</div>
@@ -65,7 +69,7 @@
   </div>
   <dialog id="about-dialog"><div class="dialog-header"><h2>关于这份题库</h2><button class="icon-button" id="about-close" aria-label="关闭说明">×</button></div><h3>三份题库，分开练习</h3><p>考点专项模拟共 1000 道，覆盖课程清单的 95 个考点，含 600 道单选和 400 道多选，依据完整版教材编写。原有模拟题共 300 道，覆盖指定教材 60 章，含 180 道单选和 120 道多选。历年真题（用户提供）收录 <span id="about-past-count">—</span> 道原题，来源为《危急重症题.doc》；保留原文件题号及重复编号，不据此确认真实考试年份。</p><h3>怎样练习</h3><p>在页面上方切换题库。范围筛选、随机 20 题、错题和进度均以当前题库为准。单选点击后查看反馈；多选选完后提交。切换题库不会清除其他题库的记录。考点专项可按9个专题和具体考点筛选。</p><h3>来源与原答案</h3><p>模拟题展示解析、知识点及教材短摘录。历年真题保留原文件答案标记；59道原答案缺失或有疑点的题已补充参考答案、核对说明与依据，并明确区别于原文件内容。可明确作答的题按参考答案判分；题干残缺、选项有歧义或存在版本差异的题给出条件性答案，不计入一致率和错题。原文件附加笔记单独保留供查阅。</p><h3>旧版内容</h3><p>历年真题含 2005 版复苏参数和其他旧版表述，部分笔记有疑似笔误或相互矛盾内容。本题库用于教材考试复习，不代替现行临床规范。</p><h3>学习记录</h3><p>免登录使用。记录仅保存在当前浏览器，不会上传，也不会跨设备同步。原有模拟和历年真题的记录继续保留；新增题从未做状态开始。清空记录只影响当前选中的题库。</p><button id="about-done" class="primary-button full-width">开始练习</button></dialog>
   <div id="toast" class="toast" role="status" hidden></div>
-  <script type="module" src="app.js?v=6"></script>
-  <script src="install.js?v=2" defer></script>
+  <script type="module" src="app.js?v=7"></script>
+  <script src="install.js?v=3" defer></script>
 </body>
 </html>

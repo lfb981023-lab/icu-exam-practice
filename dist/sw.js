@@ -2,20 +2,22 @@
  * A complete, versioned snapshot keeps the question banks and grading code in
  * step when offline. For each release that changes the app or its data, bump
  * CACHE_VERSION and the corresponding URLs here and in index.html/app.js.
- * No skipWaiting: an update takes over after the existing windows are closed.
+ * A complete update may activate while old windows stay open. It never reloads
+ * those windows; their versioned assets remain available in previous caches.
  */
 const CACHE_PREFIX = 'icu-study-offline-';
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
+const APP_RELEASE = '2026.11.11.2';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 const ASSETS = [
   {path: '/', kind: 'html'},
-  {path: '/app.js?v=6', kind: 'js'},
-  {path: '/core.js?v=6', kind: 'js'},
-  {path: '/style.css?v=6', kind: 'css'},
-  {path: '/install.js?v=2', kind: 'js'},
-  {path: '/questions.json?v=6', kind: 'bank'},
-  {path: '/past-papers.json?v=6', kind: 'bank'},
-  {path: '/focus-questions.json?v=6', kind: 'bank'},
+  {path: '/app.js?v=7', kind: 'js'},
+  {path: '/core.js?v=7', kind: 'js'},
+  {path: '/style.css?v=7', kind: 'css'},
+  {path: '/install.js?v=3', kind: 'js'},
+  {path: '/questions.json?v=7', kind: 'bank'},
+  {path: '/past-papers.json?v=7', kind: 'bank'},
+  {path: '/focus-questions.json?v=7', kind: 'bank'},
   {path: '/manifest.json', kind: 'manifest'},
   {path: '/icon.svg', kind: 'svg'},
   {path: '/icons/icon-192.png', kind: 'png'},
@@ -46,8 +48,8 @@ async function validate(response, asset) {
   const body = await response.clone().text();
   if (asset.kind === 'html') {
     if (type !== 'text/html' || !/<html\b/i.test(body) ||
-        !body.includes('app.js?v=6') || !body.includes('style.css?v=6') ||
-        !body.includes('install.js?v=2')) throw new Error('Unexpected app version');
+        !body.includes('app.js?v=7') || !body.includes('style.css?v=7') ||
+        !body.includes('install.js?v=3')) throw new Error('Unexpected app version');
     return;
   }
   if (/^\s*(?:<!doctype\s+html|<html\b)/i.test(body)) throw new Error('Unexpected HTML error page');
@@ -75,7 +77,7 @@ self.addEventListener('install', event => {
     if (await caches.has(CACHE_NAME)) {
       const existing = await caches.open(CACHE_NAME);
       const present = await Promise.all(ASSETS.map(asset => existing.match(asset.url)));
-      if (present.every(Boolean)) return;
+      if (present.every(Boolean)) { await self.skipWaiting(); return; }
       await caches.delete(CACHE_NAME);
     }
     // Fetch and validate everything before writing. A failed download never
@@ -88,6 +90,7 @@ self.addEventListener('install', event => {
       await caches.delete(CACHE_NAME);
       throw new Error('Offline snapshot could not be saved');
     }
+    await self.skipWaiting();
   })());
 });
 
@@ -96,8 +99,9 @@ self.addEventListener('activate', event => {
     const cache = await caches.open(CACHE_NAME);
     const present = await Promise.all(ASSETS.map(asset => cache.match(asset.url)));
     if (present.some(response => !response)) throw new Error('Offline snapshot incomplete');
-    const names = await caches.keys();
-    await Promise.all(names.filter(name => name.startsWith(CACHE_PREFIX) && name !== CACHE_NAME).map(name => caches.delete(name)));
+    // Keep previous complete snapshots: an open old window may still need
+    // its exact versioned scripts or data, including while offline.
+    // Activation never touches localStorage or navigates any window.
     await self.clients.claim();
   })());
 });
@@ -112,7 +116,20 @@ self.addEventListener('fetch', event => {
   const canonical = (url.pathname === '/' || url.pathname === '/index.html') && request.mode === 'navigate'
     ? new URL('/', self.location.origin).href : url.href;
   const asset = BY_URL.get(canonical);
-  if (!asset) return;
+  if (!asset) {
+    // Only historical versioned assets may fall back to a previous snapshot.
+    // Preserve query strings so old grading code never reads new data.
+    if (!url.searchParams.has('v')) return;
+    event.respondWith((async () => {
+      for (const name of await caches.keys()) {
+        if (!name.startsWith(CACHE_PREFIX) || name === CACHE_NAME) continue;
+        const cached = await (await caches.open(name)).match(request);
+        if (cached) return cached;
+      }
+      return fetch(request);
+    })());
+    return;
+  }
   event.respondWith((async () => {
     const cached = await (await caches.open(CACHE_NAME)).match(asset.url);
     if (cached) return cached;
@@ -120,4 +137,10 @@ self.addEventListener('fetch', event => {
     // file into an old snapshot from a later release.
     try { return await fetchAsset(asset); } catch { return Response.error(); }
   })());
+});
+
+self.addEventListener('message', event => {
+  if (event.data?.type === 'GET_APP_VERSION' && event.ports[0]) {
+    event.ports[0].postMessage({release: APP_RELEASE});
+  }
 });

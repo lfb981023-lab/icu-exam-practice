@@ -2,7 +2,7 @@
   "id": "/",
   "name": "重症医学每日练习",
   "short_name": "重症刷题",
-  "description": "300道模拟题与622道历年题，分别练习、查看参考答案并复习错题。",
+  "description": "1000道考点专项模拟、300道原有模拟题与622道历年题，分开练习并复习错题。",
   "lang": "zh-CN",
   "dir": "ltr",
   "start_url": "/?source=homescreen",
