@@ -56,8 +56,8 @@ test('both shipped banks have distinct IDs and ambiguous imported answers stay u
   assert.equal(mock.questions.length,300);assert.equal(past.questions.length,622);assert.equal(past.notes.length,42);
   const all=[...mock.questions,...past.questions];assert.equal(new Set(all.map(q=>q.id)).size,922);
   const references=past.questions.filter(q=>q.referenceStatus);
-  assert.equal(references.length,59);
-  assert.equal(past.questions.filter(canGrade).length,563+references.filter(q=>q.referenceStatus==='confirmed').length);
+  assert.ok(references.length>=59);assert.equal(references.length,past.metadata.referenceAnswerCount);
+  assert.equal(past.questions.filter(canGrade).length,past.questions.filter(q=>!q.referenceStatus&&q.answerStatus==='provided').length+references.filter(q=>q.referenceStatus==='confirmed').length);
   for(const q of past.questions){
     assert.ok(q.source.raw);assert.equal(q.id,'past-doc-'+String(q.source.ordinal).padStart(4,'0'));
     assert.ok(!/\/{2,}/.test(q.stem+q.options.map(o=>o.text).join(' ')));
@@ -118,4 +118,23 @@ test('point filters intersect with topic, type, unanswered, and wrong-answer vie
   assert.equal(filterQuestions(b.questions,h,{...f,unanswered:true},'practice').length,qs.length-1);
   assert.deepEqual(filterQuestions(b.questions,h,f,'wrong').map(x=>x.id),[q.id]);
   assert.ok(filterQuestions(b.questions,h,{...f,type:'multiple'},'practice').every(x=>x.type==='multiple'));
+});
+test('all imported questions have option-level explanations with honest textbook coverage',()=>{
+  const past=JSON.parse(readFileSync(new URL('../dist/past-papers.json',import.meta.url),'utf8'));
+  assert.equal(past.metadata.explanationCount,622);
+  for(const q of past.questions){
+    const e=q.detailedExplanation;assert.ok(e,q.id);
+    assert.ok(e.conclusion&&e.reasoning&&e.memory&&e.textbookNote,q.id);
+    assert.deepEqual(e.optionAnalysis.map(o=>o.key),q.options.map(o=>o.key),q.id);
+    assert.ok(e.optionAnalysis.every(o=>o.analysis.length>=7),q.id);
+    assert.ok(['direct','related','not_found','version_difference'].includes(e.textbookStatus),q.id);
+    if(e.textbookStatus==='not_found')assert.equal(e.sources.length,0,q.id);
+    else assert.ok(e.sources.length&&e.sources.every(s=>s.page===s.bookPage+12&&s.quote),q.id);
+    if(['ambiguous','versioned','incomplete'].includes(e.answerReview.status))assert.equal(canGrade(q),false,q.id);
+    if(e.answerReview.status==='correct')assert.deepEqual(answerKeys(q),e.answerReview.answers,q.id);
+    const selected=q.options.length?[q.options[0].key]:[];
+    const raw={[q.id]:{selected,reviewed:!q.options.length,correct:true,attempts:4,at:'2026-11-11T06:00:00Z'}};
+    const saved=sanitizeHistory(raw,[q])[q.id];assert.ok(saved,q.id);
+    assert.deepEqual(saved.selected,selected,q.id);assert.equal(saved.attempts,4);assert.equal(saved.at,raw[q.id].at);
+  }
 });

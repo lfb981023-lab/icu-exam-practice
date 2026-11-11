@@ -126,7 +126,7 @@
         newerReady = true; applyButton.hidden = false;
         updateStatus('新版题库已准备好。先完成当前题目，再点“更新并重新打开”；已提交的答题记录会保留。');
       } else if (activeRelease === release && !newerReady && manual) {
-        updateStatus('当前已是最新版本，包含1000道考点专项模拟题。');
+        updateStatus('当前已是最新版本：1000道考点专项模拟，622道历年题均有解答分析。');
       } else if (!activeRelease && manual && !newerReady) {
         updateStatus('暂时无法确认更新状态，请保持联网后重试。');
       }

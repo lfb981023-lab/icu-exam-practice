@@ -1,8 +1,8 @@
-import {answerKeys, canGrade, gradeQuestion, sanitizeHistory, filterQuestions, summary, shuffle} from './core.js?v=7';
+import {answerKeys, canGrade, gradeQuestion, sanitizeHistory, filterQuestions, summary, shuffle} from './core.js?v=8';
 const $ = s => document.querySelector(s);
 const KEY = 'icu.study.v1';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const bankInfo = {focus:{title:'考点专项模拟',short:'考点专项',file:'focus-questions.json',description:'依据完整版教材与课程考点 · 95 考点 · 600 单选 / 400 多选'},mock:{title:'原有模拟题',short:'原有模拟',file:'questions.json',description:'依据《实用重症医学》第2版指定删减范围 · 60 章'},past:{title:'历年真题（用户提供）',short:'历年真题',file:'past-papers.json',description:'来源：《危急重症题.doc》 · 按原文件顺序分组'}};
+const bankInfo = {focus:{title:'考点专项模拟',short:'考点专项',file:'focus-questions.json',description:'依据完整版教材与课程考点 · 95 考点 · 600 单选 / 400 多选'},mock:{title:'原有模拟题',short:'原有模拟',file:'questions.json',description:'依据《实用重症医学》第2版指定删减范围 · 60 章'},past:{title:'历年真题（用户提供）',short:'历年真题',file:'past-papers.json',description:'来源：《危急重症题.doc》 · 622题均含解答分析与教材核对'}};
 let banks={}, bank='mock', data, byId, history={}, unavailableHistory={}, pool=[], index=0, view='practice', mode='sequence', bankStates={};
 let filters={module:'all',chapter:'all',point:'all',type:'all',unanswered:false,referenceOnly:false};
 let selected=new Set(), submitted=false, toastTimer, restored=null, canSave=true;
@@ -141,7 +141,7 @@ function sourceMarkup(sources=[]){
     const content=s.tableText||s.quote, key=s.page+':'+content;
     if(seen.has(key))return '';seen.add(key);
     const label=s.bookPage?`完整版 PDF · 第 ${esc(s.page)} 页 / 书内第 ${esc(s.bookPage)} 页`:`删减版 PDF · 第 ${esc(s.page)} 页`;
-    return `<blockquote><span class="source-page">${label}${s.tableText?' · 原表/公式整理':''}</span><p>${s.tableText?esc(content):'“'+esc(content)+'”'}</p></blockquote>`;
+    return `<blockquote><span class="source-page">${label}${s.chapter?' · 第'+esc(s.chapter)+'章':''}${s.tableText?' · 原表/公式整理':''}</span><p>${s.tableText?esc(content):'“'+esc(content)+'”'}</p></blockquote>`;
   }).join('');
 }
 function referenceSourcesMarkup(sources=[]){
@@ -152,13 +152,20 @@ function referenceSourcesMarkup(sources=[]){
     return `<li>${url?`<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${title}</a>`:title}${pages?` · 删减版 PDF 第 ${esc(pages)} 页`:''}${s.excerpt?`<p>${esc(s.excerpt)}</p>`:''}</li>`;
   }).join('');
 }
+function detailedExplanationMarkup(q){
+  const e=q.detailedExplanation;if(!e)return '';
+  const labels={direct:'教材直接支持',related:'教材提供相关依据',not_found:'未找到直接对应原文',version_difference:'教材与题目存在版本差异'};
+  const status=labels[e.textbookStatus]||'教材核对说明';
+  const options=new Map(q.options.map(o=>[o.key,o.text]));
+  return `<section class="past-explanation" aria-label="逐题解答分析"><h3 class="explanation-heading">解答结论</h3><div class="knowledge-box explanation-conclusion"><p>${esc(e.conclusion)}</p></div><h3 class="explanation-heading">为什么这样选</h3><p class="rationale">${esc(e.reasoning)}</p>${e.optionAnalysis?.length?`<details class="option-analysis" open><summary>逐项辨析</summary><dl>${e.optionAnalysis.map(o=>`<div><dt><b>${esc(o.key)}</b><span>${esc(options.get(o.key)||'原选项')}</span></dt><dd>${esc(o.analysis)}</dd></div>`).join('')}</dl></details>`:''}<div class="knowledge-box"><strong>记住这一点</strong><p>${esc(e.memory)}</p></div><div class="source-heading"><h3>教材怎么说</h3><small>${esc(status)}</small></div><p class="textbook-note">${esc(e.textbookNote)}</p>${sourceMarkup(e.sources)}${e.externalSources?.length?`<details class="external-references" open><summary>补充核对资料（非教材原文）</summary><ul class="reference-sources">${referenceSourcesMarkup(e.externalSources)}</ul></details>`:''}${e.answerReview?.status!=='agree'?`<div class="version-note answer-review"><b>答案核对</b> · ${esc(e.answerReview.reason)}</div>`:''}${q.referenceSources?.length?`<details class="legacy-references"><summary>其他核对依据</summary><ul class="reference-sources">${referenceSourcesMarkup(q.referenceSources)}</ul></details>`:''}</section>`;
+}
 function pastFeedback(q,correct){
   const ungraded=correct===null, hasReference=!!q.referenceStatus;
   const title=ungraded?(hasReference?'参考答案已补充，本题暂不计分':'原答案待核对，暂不计分'):hasReference?(correct?'与参考答案一致':'与参考答案不一致'):(correct?'与原文件答案一致':'与原文件答案不一致');
   const answerText=(q.rawAnswers?.length?q.rawAnswers:q.answers||[]).join('、')||'未提供明确答案';
-  const detail=hasReference?(ungraded?'原题存在条件缺失、选项歧义或版本差异，请阅读下方参考结论。':'本题按下方参考答案判分，原文件标记保留供对照。'):ungraded?(q.answerNote||'保留原题供核对，不纳入一致率和错题统计。'):'本题按上传文件的答案标记反馈，未据此核定现行临床标准。';
+  const detail=hasReference?(ungraded?'原题存在条件缺失、选项歧义或版本差异，请阅读下方参考结论。':'本题按下方参考答案判分，原文件标记保留供对照。'):ungraded?(q.answerNote||'保留原题供核对，不纳入一致率和错题统计。'):'本题按原文件答案判分；关键推理、逐项辨析及教材核对见下方。';
   const raw=q.source?.raw||'';
-  const reference=hasReference?`<div class="knowledge-box reference-answer"><strong>补充参考答案${!ungraded?' · '+esc(answerKeys(q).join('、')):''}</strong><p>${esc(q.referenceAnswerText)}</p></div><h3 class="explanation-heading">核对说明</h3><p class="rationale">${esc(q.referenceRationale)}</p>${q.referenceSources?.length?`<h3 class="explanation-heading">参考依据</h3><ul class="reference-sources">${referenceSourcesMarkup(q.referenceSources)}</ul>`:''}`:`<h3 class="explanation-heading">原文件解析</h3><p class="rationale">${esc(q.rationale||'原文件未附独立解析。请结合教材核对，不将原答案标记直接视为现行临床结论。')}</p>${q.knowledge?`<div class="knowledge-box"><strong>原文件知识点</strong><p>${esc(q.knowledge)}</p></div>`:''}`;
+  const reference=q.detailedExplanation?detailedExplanationMarkup(q):hasReference?`<div class="knowledge-box reference-answer"><strong>补充参考答案${!ungraded?' · '+esc(answerKeys(q).join('、')):''}</strong><p>${esc(q.referenceAnswerText)}</p></div><h3 class="explanation-heading">核对说明</h3><p class="rationale">${esc(q.referenceRationale)}</p>${q.referenceSources?.length?`<h3 class="explanation-heading">参考依据</h3><ul class="reference-sources">${referenceSourcesMarkup(q.referenceSources)}</ul>`:''}`:`<h3 class="explanation-heading">原文件解析</h3><p class="rationale">${esc(q.rationale||'原文件未附独立解析。请结合教材核对，不将原答案标记直接视为现行临床结论。')}</p>${q.knowledge?`<div class="knowledge-box"><strong>原文件知识点</strong><p>${esc(q.knowledge)}</p></div>`:''}`;
   return `<section class="feedback" aria-label="作答反馈与原题来源"><div class="result-banner ${ungraded?'neutral':correct?'':'incorrect'}" role="status"><span class="result-symbol" aria-hidden="true">${ungraded?'?':correct?'✓':'×'}</span><div><strong>${title}</strong><small>${esc(detail)}</small></div></div><p class="answer-line">你的选择 <b>${[...selected].sort().join('、')||'已查看原题'}</b><br>${hasReference?'原文件标记（供对照）':ungraded?'原文件标记（待核对）':'原文件答案'} <b>${esc(answerText)}</b></p>${reference}${!hasReference&&!ungraded&&q.answerNote?`<div class="version-note">${esc(q.answerNote)}</div>`:''}<details class="original-source"><summary>查看原题及答案标记</summary><p class="source-page">${esc(q.source?.document||'危急重症题.doc')} · ${esc(q.source?.section||'原文件')} · 原题号 ${esc(q.source?.number??'—')} · 收录序号 ${esc(q.source?.ordinal??'—')}</p><pre>${esc(raw||'原题内容未能提取')}</pre></details>${q.note?`<div class="version-note"><b>原题提示</b> · ${esc(q.note)}</div>`:''}<div class="feedback-actions"><button class="quiet-button" id="retry-question">↻ 遮住反馈，再练一次</button></div></section>`;
 }
 function showFeedback(announce){
@@ -200,7 +207,7 @@ function closeAbout(){const d=$('#about-dialog');if(typeof d.close==='function')
 $('#about-open').addEventListener('click',()=>{const d=$('#about-dialog');if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');});
 $('#about-close').addEventListener('click',closeAbout);$('#about-done').addEventListener('click',closeAbout);
 $('#about-dialog').addEventListener('click',e=>{if(e.target===$('#about-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeAbout();}});
-async function loadBank(file){const response=await fetch(file+'?v=7');if(!response.ok)throw Error(file+' 加载失败');const loaded=await response.json();if(!Array.isArray(loaded.questions)||!loaded.questions.length)throw Error(file+' 尚未准备好');return loaded;}
+async function loadBank(file){const response=await fetch(file+'?v=8');if(!response.ok)throw Error(file+' 加载失败');const loaded=await response.json();if(!Array.isArray(loaded.questions)||!loaded.questions.length)throw Error(file+' 尚未准备好');return loaded;}
 async function init(){
   try{
     const bankIds=Object.keys(bankInfo);

@@ -6,18 +6,18 @@
  * those windows; their versioned assets remain available in previous caches.
  */
 const CACHE_PREFIX = 'icu-study-offline-';
-const CACHE_VERSION = 'v4';
-const APP_RELEASE = '2026.11.11.2';
+const CACHE_VERSION = 'v5';
+const APP_RELEASE = '2026.11.11.3';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 const ASSETS = [
   {path: '/', kind: 'html'},
-  {path: '/app.js?v=7', kind: 'js'},
-  {path: '/core.js?v=7', kind: 'js'},
-  {path: '/style.css?v=7', kind: 'css'},
-  {path: '/install.js?v=3', kind: 'js'},
-  {path: '/questions.json?v=7', kind: 'bank'},
-  {path: '/past-papers.json?v=7', kind: 'bank'},
-  {path: '/focus-questions.json?v=7', kind: 'bank'},
+  {path: '/app.js?v=8', kind: 'js'},
+  {path: '/core.js?v=8', kind: 'js'},
+  {path: '/style.css?v=8', kind: 'css'},
+  {path: '/install.js?v=4', kind: 'js'},
+  {path: '/questions.json?v=8', kind: 'bank'},
+  {path: '/past-papers.json?v=8', kind: 'bank'},
+  {path: '/focus-questions.json?v=8', kind: 'bank'},
   {path: '/manifest.json', kind: 'manifest'},
   {path: '/icon.svg', kind: 'svg'},
   {path: '/icons/icon-192.png', kind: 'png'},
@@ -48,8 +48,8 @@ async function validate(response, asset) {
   const body = await response.clone().text();
   if (asset.kind === 'html') {
     if (type !== 'text/html' || !/<html\b/i.test(body) ||
-        !body.includes('app.js?v=7') || !body.includes('style.css?v=7') ||
-        !body.includes('install.js?v=3')) throw new Error('Unexpected app version');
+        !body.includes('app.js?v=8') || !body.includes('style.css?v=8') ||
+        !body.includes('install.js?v=4')) throw new Error('Unexpected app version');
     return;
   }
   if (/^\s*(?:<!doctype\s+html|<html\b)/i.test(body)) throw new Error('Unexpected HTML error page');
