@@ -82,3 +82,40 @@ test('confirmed reference answers override disputed keys without overwriting the
   const f={module:'all',chapter:'all',type:'all',referenceOnly:true};
   assert.deepEqual(filterQuestions([...questions,q],{},f,'practice').map(x=>x.id),['ref']);
 });
+test('the focus bank adds exactly 1000 valid questions covering all 95 points',()=>{
+  const b=JSON.parse(readFileSync(new URL('../dist/focus-questions.json',import.meta.url),'utf8'));
+  const oldFiles=['questions.json','past-papers.json'];
+  const old=oldFiles.flatMap(f=>JSON.parse(readFileSync(new URL('../dist/'+f,import.meta.url),'utf8')).questions);
+  assert.equal(b.questions.length,1000);assert.equal(b.points.length,95);assert.equal(b.modules.length,9);
+  assert.equal(b.questions.filter(q=>q.type==='single').length,600);
+  assert.equal(b.questions.filter(q=>q.type==='multiple').length,400);
+  assert.equal(new Set([...old,...b.questions].map(q=>q.id)).size,1922);
+  for(const p of b.points){const qs=b.questions.filter(q=>q.pointId===p.id);assert.ok(qs.length>=10&&qs.length<=11);assert.equal(qs.length,p.count);}
+  for(const q of b.questions){
+    assert.equal(canGrade(q),true,q.id);assert.equal(gradeQuestion(q.answers,q),true,q.id);
+    assert.equal(gradeQuestion(q.options.map(o=>o.key),q),false,q.id);
+    assert.deepEqual(q.options.map(o=>o.key),['A','B','C','D','E']);
+    assert.ok(q.rationale&&q.knowledge&&q.pointTitle,q.id);
+    assert.ok(q.sources.length&&q.sources.every(s=>s.page===s.bookPage+12&&s.quote),q.id);
+  }
+});
+test('adding focus questions preserves every valid existing response, attempts, and timestamp',()=>{
+  const old=['questions.json','past-papers.json'].flatMap(f=>JSON.parse(readFileSync(new URL('../dist/'+f,import.meta.url),'utf8')).questions);
+  const focus=JSON.parse(readFileSync(new URL('../dist/focus-questions.json',import.meta.url),'utf8')).questions;
+  const raw=Object.fromEntries(old.map((q,i)=>[q.id,{selected:q.options.length?[q.options[0].key]:[],reviewed:!q.options.length,attempts:i%5+1,at:'2026-11-10T10:00:00.000Z'}]));
+  const before=sanitizeHistory(raw,old),after=sanitizeHistory(raw,[...old,...focus]);
+  assert.deepEqual(after,before);assert.equal(summary(focus,after).done,0);
+  const q=focus[0];const withNew=sanitizeHistory({...raw,[q.id]:{selected:q.answers,attempts:1}},[...old,...focus]);
+  for(const id of Object.keys(before))assert.deepEqual(withNew[id],before[id]);
+});
+test('point filters intersect with topic, type, unanswered, and wrong-answer views',()=>{
+  const b=JSON.parse(readFileSync(new URL('../dist/focus-questions.json',import.meta.url),'utf8'));
+  const p=b.points[0],qs=b.questions.filter(q=>q.pointId===p.id),q=qs[0];
+  const f={module:p.module,chapter:'all',point:p.id,type:'all'};
+  assert.deepEqual(filterQuestions(b.questions,{},f,'practice').map(q=>q.id),qs.map(q=>q.id));
+  assert.equal(filterQuestions(b.questions,{}, {...f,module:'focus-topic-9'},'practice').length,0);
+  const h={[q.id]:{selected:q.answers,correct:false}};
+  assert.equal(filterQuestions(b.questions,h,{...f,unanswered:true},'practice').length,qs.length-1);
+  assert.deepEqual(filterQuestions(b.questions,h,f,'wrong').map(x=>x.id),[q.id]);
+  assert.ok(filterQuestions(b.questions,h,{...f,type:'multiple'},'practice').every(x=>x.type==='multiple'));
+});

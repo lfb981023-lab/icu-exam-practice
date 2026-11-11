@@ -5,16 +5,17 @@
  * No skipWaiting: an update takes over after the existing windows are closed.
  */
 const CACHE_PREFIX = 'icu-study-offline-';
-const CACHE_VERSION = 'v2';
+const CACHE_VERSION = 'v3';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;
 const ASSETS = [
   {path: '/', kind: 'html'},
-  {path: '/app.js?v=5', kind: 'js'},
-  {path: '/core.js?v=5', kind: 'js'},
-  {path: '/style.css?v=5', kind: 'css'},
+  {path: '/app.js?v=6', kind: 'js'},
+  {path: '/core.js?v=6', kind: 'js'},
+  {path: '/style.css?v=6', kind: 'css'},
   {path: '/install.js?v=2', kind: 'js'},
-  {path: '/questions.json?v=5', kind: 'bank'},
-  {path: '/past-papers.json?v=5', kind: 'bank'},
+  {path: '/questions.json?v=6', kind: 'bank'},
+  {path: '/past-papers.json?v=6', kind: 'bank'},
+  {path: '/focus-questions.json?v=6', kind: 'bank'},
   {path: '/manifest.json', kind: 'manifest'},
   {path: '/icon.svg', kind: 'svg'},
   {path: '/icons/icon-192.png', kind: 'png'},
@@ -45,7 +46,7 @@ async function validate(response, asset) {
   const body = await response.clone().text();
   if (asset.kind === 'html') {
     if (type !== 'text/html' || !/<html\b/i.test(body) ||
-        !body.includes('app.js?v=5') || !body.includes('style.css?v=5') ||
+        !body.includes('app.js?v=6') || !body.includes('style.css?v=6') ||
         !body.includes('install.js?v=2')) throw new Error('Unexpected app version');
     return;
   }

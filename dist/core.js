@@ -41,6 +41,7 @@ export function filterQuestions(questions, history, filters, view) {
   return questions.filter(q =>
     (filters.module === 'all' || q.module === filters.module) &&
     (filters.chapter === 'all' || q.chapter === Number(filters.chapter)) &&
+    (!filters.point || filters.point === 'all' || q.pointId === filters.point) &&
     (filters.type === 'all' || q.type === filters.type) &&
     (!filters.referenceOnly || !!q.referenceStatus) &&
     (!filters.unanswered || !history[q.id]) &&
